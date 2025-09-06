@@ -6,7 +6,7 @@ const tagGroups = {
   "Type": ["Basic"],
   "Brand": ["Anycubic", "Plexiwire"],
   "Color": ["White", "Gray", "Black", "Czerwony", "Zielony", "Błekitny"],
-  "Features": ["Ironing", "No-Ironing", "Shiny", "Test"]
+  "Features": ["Ironing", "No-Ironing", "Shiny"]
 };
 
 function SearchBar({ search, setSearch, selectedTags, setSelectedTags, allTags }) {
