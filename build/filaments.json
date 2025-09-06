@@ -1,49 +1,219 @@
 [
   {
-    "id": "pla-bialy-ironing",
+    "id": "1",
     "name": "PLA Basic Biały Anycubic",
     "type": "PLA Basic",
     "color": "Biały",
-    "tags": ["PLA", "Basic", "Ironing", "Test", "Anycubic"],
+    "tags": ["PLA", "Basic", "Ironing", "Anycubic", "White", "Shiny"],
     "settings": {
       "Printer Settings": {
         "layer height": "0.2mm",
-        "temperature": "200°C",
+        "temperature": "190°C",
         "bed": "60°C"
       },
       "Printing Speeds": {
-        "speed": "50mm/s",
-        "retraction": "1mm",
-        "retraction speed": "25mm/s"
+        "inner wall": "50mm/s",
+        "outer wall": "50mm/s",
+        "infill": "60mm/s",
+        "initial layer": "15mm/s",
+        "travel": "150mm/s"
+      },
+      "Retraction": {
+        "length": "1mm",
+        "speed": "25mm/s"
       },
       "Filament Details": {
         "diameter": "1.75mm",
         "flow": "98%"
       }
     },
-    "buyLink": "https://anycubicofficial.pl/products/filament-pla?_sasdk=dMTk5MWY4OGYxZjdlMTQtMGYxYmUxZjBiMDZkMDA4LTQ2NTA0YjU4LTIwNzM2MDAtMTk5MWY4OGYxZjgxMzcx",
+    "buyLink": "https://anycubicofficial.pl/products/filament-pla?variant=44750313390389",
     "image": "pla-bialy-ironing.jpg"
   },
   {
-    "id": "pla-bialy-noironing",
-    "name": "PLA Biały (Bez Ironingu)",
+    "id": "2",
+    "name": "PLA Basic Biały Anycubic",
     "type": "PLA",
     "color": "Biały",
-    "tags": ["PLA", "No-Ironing", "Anycubic"],
+    "tags": ["PLA", "Basic", "No-Ironing", "Anycubic", "White", "Shiny"],
     "settings": {
       "Printer Settings": {
-        "temperature": "200°C",
+        "layer height": "0.2mm",
+        "temperature": "190°C",
         "bed": "60°C"
       },
       "Printing Speeds": {
-        "speed": "50mm/s",
-        "retraction": "0.8mm"
+        "inner wall": "50mm/s",
+        "outer wall": "50mm/s",
+        "infill": "60mm/s",
+        "initial layer": "15mm/s",
+        "travel": "150mm/s"
+      },
+      "Retraction": {
+        "length": "1mm",
+        "speed": "25mm/s"
       },
       "Filament Details": {
-        "flow": "100%"
+        "diameter": "1.75mm",
+        "flow": "98%"
       }
     },
-    "buyLink": "https://anycubicofficial.pl/products/filament-pla?_sasdk=dMTk5MWY4OGYxZjdlMTQtMGYxYmUxZjBiMDZkMDA4LTQ2NTA0YjU4LTIwNzM2MDAtMTk5MWY4OGYxZjgxMzcx",
+    "buyLink": "https://anycubicofficial.pl/products/filament-pla?variant=44750313390389",
+    "image": "pla-bialy-noironing.jpg"
+  },
+  {
+    "id": "3",
+    "name": "PLA Basic Szary Anycubic",
+    "type": "PLA",
+    "color": "Szary",
+    "tags": ["PLA", "Basic", "No-Ironing", "Anycubic", "Gray", "Shiny"],
+    "settings": {
+      "Printer Settings": {
+        "layer height": "0.2mm",
+        "temperature": "190°C",
+        "bed": "60°C"
+      },
+      "Printing Speeds": {
+        "inner wall": "50mm/s",
+        "outer wall": "50mm/s",
+        "infill": "60mm/s",
+        "initial layer": "15mm/s",
+        "travel": "150mm/s"
+      },
+      "Retraction": {
+        "length": "1mm",
+        "speed": "25mm/s"
+      },
+      "Filament Details": {
+        "diameter": "1.75mm",
+        "flow": "98%"
+      }
+    },
+    "buyLink": "https://anycubicofficial.pl/products/filament-pla?variant=44750313521461",
+    "image": "pla-bialy-noironing.jpg"
+  },
+  {
+    "id": "4",
+    "name": "PLA Basic Czarny Anycubic",
+    "type": "PLA",
+    "color": "Czarny",
+    "tags": ["PLA", "Basic", "No-Ironing", "Anycubic", "Black", "Shiny"],
+    "settings": {
+      "Printer Settings": {
+        "layer height": "0.2mm",
+        "temperature": "190°C",
+        "bed": "60°C"
+      },
+      "Printing Speeds": {
+        "inner wall": "50mm/s",
+        "outer wall": "50mm/s",
+        "infill": "60mm/s",
+        "initial layer": "15mm/s",
+        "travel": "150mm/s"
+      },
+      "Retraction": {
+        "length": "1mm",
+        "speed": "25mm/s"
+      },
+      "Filament Details": {
+        "diameter": "1.75mm",
+        "flow": "98%"
+      }
+    },
+    "buyLink": "https://anycubicofficial.pl/products/filament-pla?variant=44750313488693",
+    "image": "pla-bialy-noironing.jpg"
+  },
+  {
+    "id": "5",
+    "name": "PLA Basic Czerwony Plexiwire",
+    "type": "PLA",
+    "color": "Czerwony",
+    "tags": ["PLA", "Basic", "No-Ironing", "Plexiwire", "Red", "Shiny"],
+    "settings": {
+      "Printer Settings": {
+        "layer height": "0.2mm",
+        "temperature": "190°C",
+        "bed": "60°C"
+      },
+      "Printing Speeds": {
+        "inner wall": "50mm/s",
+        "outer wall": "50mm/s",
+        "infill": "60mm/s",
+        "initial layer": "15mm/s",
+        "travel": "150mm/s"
+      },
+      "Retraction": {
+        "length": "1mm",
+        "speed": "25mm/s"
+      },
+      "Filament Details": {
+        "diameter": "1.75mm",
+        "flow": "98%"
+      }
+    },
+    "buyLink": "https://allegro.pl/oferta/filament-pla-plexiwire-1-75-mm-czerwony-900g-300m-12926282260?context=bb0d91481d9e9429596ec70f8ec5a6426c181630e0acda06b35d7239162267622b19c93790ed87b34031938b2ff4eb5adcc4f4a4a0c746f665f9b303d23a697ab5e435d9fabccbd2421d0baf935f2ab329cd5b376e028a793d9926ac79e48f9cf880585c88e3883128a508ebba60223ab81779aabac3e0bba1eaa33e553ab57b65270bd9a0dad2a32b7159b294a31825&sellerHasChanged=false&fromVariant=16434446767",
+    "image": "pla-bialy-noironing.jpg"
+  },
+  {
+    "id": "6",
+    "name": "PLA Basic Zielony Plexiwire",
+    "type": "PLA",
+    "color": "Zielony",
+    "tags": ["PLA", "Basic", "No-Ironing", "Plexiwire", "Green", "Shiny"],
+    "settings": {
+      "Printer Settings": {
+        "layer height": "0.2mm",
+        "temperature": "190°C",
+        "bed": "60°C"
+      },
+      "Printing Speeds": {
+        "inner wall": "50mm/s",
+        "outer wall": "50mm/s",
+        "infill": "60mm/s",
+        "initial layer": "15mm/s",
+        "travel": "150mm/s"
+      },
+      "Retraction": {
+        "length": "1mm",
+        "speed": "25mm/s"
+      },
+      "Filament Details": {
+        "diameter": "1.75mm",
+        "flow": "98%"
+      }
+    },
+    "buyLink": "https://allegro.pl/oferta/filament-pla-plexiwire-1-75-mm-zielony-900g-300m-12926376448?context=bb0d91481d9e9429596ec70f8ec5a6426c181630e0acda06b35d7239162267622b19c93790ed87b34031938b2ff4eb5adcc4f4a4a0c746f665f9b303d23a697ab5e435d9fabccbd2421d0baf935f2ab329cd5b376e028a793d9926ac79e48f9cf880585c88e3883128a508ebba60223ab81779aabac3e0bba1eaa33e553ab57b65270bd9a0dad2a32b7159b294a31825&sellerHasChanged=false&fromVariant=12926282260",
+    "image": "pla-bialy-noironing.jpg"
+  },
+  {
+    "id": "7",
+    "name": "PLA Basic Błekitny Plexiwire",
+    "type": "PLA",
+    "color": "Błekitny",
+    "tags": ["PLA", "Basic", "No-Ironing", "Plexiwire", "Blue", "Shiny"],
+    "settings": {
+      "Printer Settings": {
+        "layer height": "0.2mm",
+        "temperature": "190°C",
+        "bed": "60°C"
+      },
+      "Printing Speeds": {
+        "inner wall": "50mm/s",
+        "outer wall": "50mm/s",
+        "infill": "60mm/s",
+        "initial layer": "15mm/s",
+        "travel": "150mm/s"
+      },
+      "Retraction": {
+        "length": "1mm",
+        "speed": "25mm/s"
+      },
+      "Filament Details": {
+        "diameter": "1.75mm",
+        "flow": "98%"
+      }
+    },
+    "buyLink": "https://allegro.pl/oferta/filament-plexiwire-pla-blue-niebieski-900g-300m-15198390973",
     "image": "pla-bialy-noironing.jpg"
   }
 ]
