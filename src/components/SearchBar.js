@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 const tagGroups = {
   "Material": ["PLA"],
   "Type": ["Basic"],
-  "Brand": ["Anycubic", "Plexwire"],
+  "Brand": ["Anycubic", "Plexiwire"],
   "Color": ["White", "Gray", "Black", "Czerwony", "Zielony", "Błekitny"],
   "Features": ["Ironing", "No-Ironing", "Shiny", "Test"]
 };
