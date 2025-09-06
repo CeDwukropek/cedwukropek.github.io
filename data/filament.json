@@ -1,0 +1,22 @@
+[
+  {
+    "id": "pla-white-ironing",
+    "name": "PLA Biały (Ironing)",
+    "type": "PLA",
+    "color": "Biały",
+    "temp": "200°C / 60°C",
+    "tags": ["PLA", "Ironing", "Test"],
+    "link": "https://www.prusa3d.com/",
+    "img": "assets/img/pla-white.jpg"
+  },
+  {
+    "id": "pla-white-noironing",
+    "name": "PLA Biały (Bez Ironingu)",
+    "type": "PLA",
+    "color": "Biały",
+    "temp": "200°C / 60°C",
+    "tags": ["PLA", "No-Ironing"],
+    "link": "https://www.amazon.com/",
+    "img": "assets/img/pla-white.jpg"
+  }
+]
