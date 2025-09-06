@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 
-function SearchBar({ search, setSearch, selectedTags, setSelectedTags, groupedTags }) {
+function SearchBar({ search, setSearch, selectedTags, setSelectedTags, allTags }) {
+  // Track only one open group at a time
   const [openGroup, setOpenGroup] = useState(null);
   const containerRef = useRef(null);
 
