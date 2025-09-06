@@ -29,15 +29,26 @@ function FilamentDetail() {
       <p><b>Typ:</b> {filament.type}</p>
       <p><b>Kolor:</b> {filament.color}</p>
       <h3>Ustawienia druku:</h3>
-      <ul>
-        {Object.entries(filament.settings).map(([key, val]) => (
-          <li key={key}>{key}: {val}</li>
-        ))}
-      </ul>
-      <a href={filament.buyLink} target="_blank" rel="noreferrer">Kup ten filament</a>
-      
+      {Object.entries(filament.settings).map(([section, settings]) => (
+        <div key={section} className="settings-section">
+          <h4>{section}</h4>
+          <ul>
+            {Object.entries(settings).map(([key, val]) => (
+              <li key={key}>
+                {key}: {val}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+      <a href={filament.buyLink} target="_blank" rel="noreferrer">
+        Kup ten filament
+      </a>
       <h3>Twoje notatki:</h3>
-      <textarea value={note} onChange={(e) => setNote(e.target.value)} />
+      <textarea
+        value={note}
+        onChange={(e) => setNote(e.target.value)}
+      />
       <button onClick={saveNote}>Zapisz</button>
     </div>
   );
