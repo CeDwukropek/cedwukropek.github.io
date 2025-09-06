@@ -1,35 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { tagGroupMapping } from "../utils/tagGroupMapping";
 
 function FilamentCard({ filament }) {
-  const temperature =
-    filament.settings?.["Printer Settings"]?.temperature || "";
-  const bedTemperature =
-    filament.settings?.["Printer Settings"]?.bed || "";
+  // Group tags by group based on the mapping.
+  const groupedTags = (filament.tags || []).reduce((acc, tag) => {
+    const group = tagGroupMapping[tag] || "other";
+    if (!acc[group]) acc[group] = [];
+    acc[group].push(tag);
+    return acc;
+  }, {});
 
   // Define the desired order for groups.
-  const groupOrder = ["material", "type", "brand", "color", "features"];
+  const groupOrder = ["material", "type", "brand", "color", "features", "other"];
 
-  // Flatten the tags object into an array with group information.
-  let sortedTags = [];
-  if (filament.tags) {
-    // First, add tags from groups in order.
-    groupOrder.forEach((group) => {
-      if (filament.tags[group]) {
-        sortedTags = sortedTags.concat(
-          filament.tags[group].map((tag) => ({ group, tag }))
-        );
-      }
-    });
-    // Then, add any remaining groups not defined in groupOrder.
-    Object.entries(filament.tags).forEach(([group, tags]) => {
-      if (!groupOrder.includes(group)) {
-        sortedTags = sortedTags.concat(
-          tags.map((tag) => ({ group, tag }))
-        );
-      }
-    });
-  }
+  // Extract the temperature from the settings.
+  const temperature =
+    filament.settings &&
+    filament.settings["Printer Settings"] &&
+    filament.settings["Printer Settings"].temperature;
+
+  const bedTemperature =
+    filament.settings &&
+    filament.settings["Printer Settings"] &&
+    filament.settings["Printer Settings"].bed;
 
   return (
     <div className="card">
@@ -38,15 +32,19 @@ function FilamentCard({ filament }) {
       </h3>
       {temperature && (
         <div className="temperature">
-          {temperature} / {bedTemperature}
+          {temperature}/{bedTemperature}
         </div>
       )}
       <div className="tags">
-        {sortedTags.map(({ group, tag }) => (
-          <span key={`${group}-${tag}`} className={`tag ${group}`}>
-            {tag}
-          </span>
-        ))}
+        {groupOrder.map(
+          (group) =>
+            groupedTags[group] &&
+            groupedTags[group].map((tag) => (
+              <span key={tag} className={`tag ${group}`}>
+                {tag}
+              </span>
+            ))
+        )}
       </div>
     </div>
   );

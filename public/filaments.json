@@ -4,13 +4,7 @@
     "name": "PLA Basic Biały Anycubic",
     "type": "PLA Basic",
     "color": "Biały",
-    "tags": {
-      "material": ["PLA"],
-      "type": ["Basic"],
-      "brand": ["Anycubic"],
-      "color": ["White"],
-      "features": ["Ironing", "Shiny"]
-    },
+    "tags": ["PLA", "Basic", "Ironing", "Anycubic", "White", "Shiny"],
     "settings": {
       "Printer Settings": {
         "layer height": "0.2mm",
@@ -41,13 +35,7 @@
     "name": "PLA Basic Biały Anycubic",
     "type": "PLA",
     "color": "Biały",
-    "tags": {
-      "material": ["PLA"],
-      "type": ["Basic"],
-      "brand": ["Anycubic"],
-      "color": ["White"],
-      "features": ["No-Ironing", "Shiny"]
-    },
+    "tags": ["PLA", "Basic", "No-Ironing", "Anycubic", "White", "Shiny"],
     "settings": {
       "Printer Settings": {
         "layer height": "0.2mm",
@@ -78,13 +66,7 @@
     "name": "PLA Basic Szary Anycubic",
     "type": "PLA",
     "color": "Szary",
-    "tags": {
-      "material": ["PLA"],
-      "type": ["Basic"],
-      "brand": ["Anycubic"],
-      "color": ["Gray"],
-      "features": ["No-Ironing", "Shiny"]
-    },
+    "tags": ["PLA", "Basic", "No-Ironing", "Anycubic", "Gray", "Shiny"],
     "settings": {
       "Printer Settings": {
         "layer height": "0.2mm",
@@ -115,13 +97,7 @@
     "name": "PLA Basic Czarny Anycubic",
     "type": "PLA",
     "color": "Czarny",
-    "tags": {
-      "material": ["PLA"],
-      "type": ["Basic"],
-      "brand": ["Anycubic"],
-      "color": ["Black"],
-      "features": ["No-Ironing", "Shiny"]
-    },
+    "tags": ["PLA", "Basic", "No-Ironing", "Anycubic", "Black", "Shiny"],
     "settings": {
       "Printer Settings": {
         "layer height": "0.2mm",
@@ -152,13 +128,7 @@
     "name": "PLA Basic Czerwony Plexiwire",
     "type": "PLA",
     "color": "Czerwony",
-    "tags": {
-      "material": ["PLA"],
-      "type": ["Basic"],
-      "brand": ["Plexiwire"],
-      "color": ["Red"],
-      "features": ["No-Ironing", "Shiny"]
-    },
+    "tags": ["PLA", "Basic", "No-Ironing", "Plexiwire", "Red", "Shiny"],
     "settings": {
       "Printer Settings": {
         "layer height": "0.2mm",
@@ -189,13 +159,7 @@
     "name": "PLA Basic Zielony Plexiwire",
     "type": "PLA",
     "color": "Zielony",
-    "tags": {
-      "material": ["PLA"],
-      "type": ["Basic"],
-      "brand": ["Plexiwire"],
-      "color": ["Green"],
-      "features": ["No-Ironing", "Shiny"]
-    },
+    "tags": ["PLA", "Basic", "No-Ironing", "Plexiwire", "Green", "Shiny"],
     "settings": {
       "Printer Settings": {
         "layer height": "0.2mm",
@@ -226,13 +190,7 @@
     "name": "PLA Basic Błekitny Plexiwire",
     "type": "PLA",
     "color": "Błekitny",
-    "tags": {
-      "material": ["PLA"],
-      "type": ["Basic"],
-      "brand": ["Plexiwire"],
-      "color": ["Blue"],
-      "features": ["No-Ironing", "Shiny"]
-    },
+    "tags": ["PLA", "Basic", "No-Ironing", "Plexiwire", "Blue", "Shiny"],
     "settings": {
       "Printer Settings": {
         "layer height": "0.2mm",

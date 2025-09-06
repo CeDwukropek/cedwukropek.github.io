@@ -1,12 +1,25 @@
 import React, { useState, useRef, useEffect } from "react";
 
+// Define groups of tags. Adjust the tags in each group per your needs.
+const tagGroups = {
+  "Material": ["PLA", "PET-G"],
+  "Type": ["Basic", "Plus"],
+  "Brand": ["Anycubic", "Plexiwire", "Devil Design"],
+  "Color": ["White", "Gray", "Black", "Red", "Green", "Blue"],
+  "Features": ["Ironing", "No-Ironing", "Shiny", "Mat"]
+};
+
 function SearchBar({ search, setSearch, selectedTags, setSelectedTags, allTags }) {
   // Track only one open group at a time
   const [openGroup, setOpenGroup] = useState(null);
   const containerRef = useRef(null);
 
   const toggleGroup = (groupName) => {
-    setOpenGroup(openGroup === groupName ? null : groupName);
+    if (openGroup === groupName) {
+      setOpenGroup(null);
+    } else {
+      setOpenGroup(groupName);
+    }
   };
 
   const handleTagToggle = (tag) => {
@@ -17,7 +30,7 @@ function SearchBar({ search, setSearch, selectedTags, setSelectedTags, allTags }
     }
   };
 
-  // Zamknij dropdown po kliknięciu poza nim
+  // Detect clicks outside the dropdown container and close any open dropdown.
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (containerRef.current && !containerRef.current.contains(event.target)) {
@@ -30,9 +43,10 @@ function SearchBar({ search, setSearch, selectedTags, setSelectedTags, allTags }
     };
   }, []);
 
-  // Render dropdowna dla każdej grupy
+  // Render a dropdown for each tag group.
   const renderTagGroup = (groupName, groupTags) => {
-    if (!groupTags || groupTags.size === 0) return null;
+    const availableTags = groupTags.filter((tag) => allTags.includes(tag));
+    if (availableTags.length === 0) return null;
     return (
       <div key={groupName} className="dropdown-group">
         <button
@@ -43,7 +57,7 @@ function SearchBar({ search, setSearch, selectedTags, setSelectedTags, allTags }
         </button>
         {openGroup === groupName && (
           <div className="dropdown-content">
-            {[...groupTags].map((tag) => (
+            {availableTags.map((tag) => (
               <label key={tag} className="dropdown-item">
                 <input
                   type="checkbox"
@@ -70,7 +84,7 @@ function SearchBar({ search, setSearch, selectedTags, setSelectedTags, allTags }
         />
       </div>
       <div className="dropdown-filter">
-        {Object.entries(groupedTags).map(([groupName, groupTags]) =>
+        {Object.entries(tagGroups).map(([groupName, groupTags]) =>
           renderTagGroup(groupName, groupTags)
         )}
       </div>
