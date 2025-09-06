@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import DarkModeToggle from "./DarkModeToggle";
 
 function Header({ darkMode, setDarkMode }) {
   return (
     <header>
-      <Link to="/"><h1>📦 Moja Biblioteka Filamentów</h1></Link>
-      <button onClick={() => setDarkMode(!darkMode)}>
-        {darkMode ? "☀️ Jasny tryb" : "🌙 Ciemny tryb"}
-      </button>
+      <Link to="/"><h1>📦 Biblioteka Filamentów</h1></Link>
+      <DarkModeToggle isDarkMode={darkMode} toggleDarkMode={() => setDarkMode(!darkMode)} />
     </header>
   );
 }
