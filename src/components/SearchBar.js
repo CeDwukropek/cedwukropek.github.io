@@ -2,11 +2,11 @@ import React, { useState, useRef, useEffect } from "react";
 
 // Define groups of tags. Adjust the tags in each group per your needs.
 const tagGroups = {
-  "Material": ["PLA"],
-  "Type": ["Basic"],
-  "Brand": ["Anycubic", "Plexiwire"],
-  "Color": ["White", "Gray", "Black", "Czerwony", "Zielony", "Błekitny"],
-  "Features": ["Ironing", "No-Ironing", "Shiny"]
+  "Material": ["PLA", "PET-G"],
+  "Type": ["Basic", "Plus"],
+  "Brand": ["Anycubic", "Plexiwire", "Devil Design"],
+  "Color": ["White", "Gray", "Black", "Red", "Green", "Blue"],
+  "Features": ["Ironing", "No-Ironing", "Shiny", "Mat"]
 };
 
 function SearchBar({ search, setSearch, selectedTags, setSelectedTags, allTags }) {
