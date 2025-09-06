@@ -35,6 +35,7 @@ body.dark {
 header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem;
   background: var(--card-bg);
   border-bottom: 1px solid var(--border);
@@ -196,4 +197,17 @@ body.dark .search-bar select {
   background-size: 1rem;
   background-repeat: no-repeat;
   background-position: right 0.5rem center;
+}
+
+/* Simplified dark mode toggle icon button styling */
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* fixed square width */
+  height: 40px; /* fixed square height */
 }
