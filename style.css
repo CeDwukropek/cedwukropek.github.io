@@ -45,23 +45,28 @@ button {
   cursor: pointer;
 }
 
+a {
+  color: var(--text);
+  text-decoration: none;
+}
+
 .grid {
-  margin-top: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 0.25fr));
+  gap: 1rem;
+  padding: 1rem;
 }
 
 .card {
   background: var(--card-bg);
-  border-radius: 12px;
-  padding: 15px;
+  border-radius: 8px;
+  padding: 1rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
 }
 
 .card:hover {
-  transform: translateY(-3px);
+  transform: scale(1.02);
 }
 
 .card img {
@@ -93,4 +98,26 @@ button {
   border-radius: 6px;
   border: 1px solid #aaa;
   padding: 6px;
+  margin-top: 10px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+  color: var(--text);
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body:not(.light) {
+    --bg: #1e1e1e;
+    --text: #ddd;
+    --card-bg: #2a2a2a;
+  }
 }

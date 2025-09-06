@@ -40,7 +40,6 @@ function renderFilaments(list) {
     card.href = `?id=${fil.id}`;
 
     card.innerHTML = `
-      <img src="${fil.img}" alt="${fil.name}">
       <h2>${fil.name}</h2>
       <p><b>Typ:</b> ${fil.type} | <b>Kolor:</b> ${fil.color}</p>
       <div class="tags">
@@ -63,7 +62,6 @@ function renderDetail(fil) {
   card.className = "card";
 
   card.innerHTML = `
-    <img src="${fil.img}" alt="${fil.name}">
     <h1>${fil.name}</h1>
     <p><b>Typ:</b> ${fil.type} | <b>Kolor:</b> ${fil.color}</p>
     <p><b>Temperatura:</b> ${fil.temp}</p>
