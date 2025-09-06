@@ -21,6 +21,11 @@ body {
   --border: #e2e8f0;
   --accent: #3b82f6;
   --accent-hover: #2563eb;
+  --group-material: #ffdab9; /* Peach Puff */
+  --group-type: #e6e6fa; /* Lavender */
+  --group-brand: #e0ffff; /* Light Cyan */
+  --group-color: #f5f5dc; /* Beige */
+  --group-features: #f0fff0; /* Honeydew */
 }
 
 body.dark {
@@ -30,6 +35,11 @@ body.dark {
   --border: #334155;
   --accent: #60a5fa;
   --accent-hover: #3b82f6;
+  --group-material: #ba7f5d; /* Darker peach */
+  --group-type: #b5a6d2; /* Darker lavender */
+  --group-brand: #90b4b9; /* Darker cyan */
+  --group-color: #c8c09e; /* Darker beige */
+  --group-features: #aabb98; /* Darker honeydew */
 }
 
 header {
@@ -84,6 +94,12 @@ header {
   margin-right: 4px;
   margin-bottom: 4px;
   font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  color: #333;
+  margin-right: 0.3rem;
+  display: inline-block;
 }
 
 a {
@@ -259,8 +275,13 @@ body.dark .search-bar select {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px; /* fixed square width */
-  height: 40px; /* fixed square height */
+  width: 40px;
+  height: 40px;
+  color: #000; /* black icon in light mode */
+}
+
+body.dark .dark-mode-toggle {
+  color: var(--text); /* use text color (light) in dark mode */
 }
 
 .settings-section {
@@ -365,4 +386,25 @@ body.dark .search-bar select {
   border: solid white;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
+}
+
+/* Use group-specific background colors */
+.tag.material {
+  background-color: var(--group-material);
+}
+
+.tag.type {
+  background-color: var(--group-type);
+}
+
+.tag.brand {
+  background-color: var(--group-brand);
+}
+
+.tag.color {
+  background-color: var(--group-color);
+}
+
+.tag.features {
+  background-color: var(--group-features);
 }
