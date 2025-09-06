@@ -13,5 +13,4 @@ export const tagGroupMapping = {
     "No-Ironing": "features",
     Shiny: "features",
     Mat: "features",
-    Test: "features",
 };

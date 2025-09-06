@@ -275,8 +275,13 @@ body.dark .search-bar select {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px; /* fixed square width */
-  height: 40px; /* fixed square height */
+  width: 40px;
+  height: 40px;
+  color: #000; /* black icon in light mode */
+}
+
+body.dark .dark-mode-toggle {
+  color: var(--text); /* use text color (light) in dark mode */
 }
 
 .settings-section {
