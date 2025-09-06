@@ -170,36 +170,70 @@ li {
   line-height: 1.6;
 }
 
+.search-container {
+  margin-bottom: 1.5rem;
+}
+
 .search-bar {
   display: flex;
   gap: 1rem;
-  margin-bottom: 1rem;
   flex-wrap: wrap;
 }
 
-.search-bar input,
-.search-bar select {
+.search-bar input {
   padding: 0.5rem;
   border-radius: 4px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border);
+  flex-grow: 1;
 }
 
-/* Improve dark mode styling for the dropdown in the search bar */
+/* Remove old select styles */
+.search-bar select {
+  display: none;
+}
+
 body.dark .search-bar select {
-  background-color: var(--bg);
+  display: none;
+}
+
+/* Add new styles for the tag buttons */
+.tag-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tag-button {
+  background-color: var(--card-bg);
   color: var(--text);
   border: 1px solid var(--border);
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  padding-right: 2rem; /* extra space for custom arrow */
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23e2e8f0'/%3E%3C/svg%3E");
-  background-size: 1rem;
-  background-repeat: no-repeat;
-  background-position: right 0.5rem center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem; /* pill shape */
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease;
+  margin-top: 0; /* override default button margin */
+  font-weight: 400;
 }
 
-/* Simplified dark mode toggle icon button styling */
+.tag-button:hover {
+  background-color: var(--border);
+}
+
+.tag-button.selected {
+  background-color: var(--accent);
+  color: white;
+  border-color: var(--accent);
+  font-weight: 500;
+}
+
+.tag-button.selected:hover {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
 .dark-mode-toggle {
   background: none;
   border: none;
@@ -210,4 +244,12 @@ body.dark .search-bar select {
   justify-content: center;
   width: 40px; /* fixed square width */
   height: 40px; /* fixed square height */
+}
+
+.settings-section {
+  margin-left: 1rem;
+}
+
+.settings-section h4 {
+  margin-bottom: 0.5rem;
 }

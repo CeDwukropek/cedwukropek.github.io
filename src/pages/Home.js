@@ -5,7 +5,8 @@ import SearchBar from "../components/SearchBar";
 function Home() {
   const [filaments, setFilaments] = useState([]);
   const [search, setSearch] = useState("");
-  const [tag, setTag] = useState("");
+  // change from single tag to an array of selected tags
+  const [selectedTags, setSelectedTags] = useState([]);
   const [allTags, setAllTags] = useState([]);
 
   useEffect(() => {
@@ -13,7 +14,7 @@ function Home() {
       .then((res) => res.json())
       .then((data) => {
         setFilaments(data);
-        // wyciągamy unikalne tagi
+        // extract unique tags
         const tags = [...new Set(data.flatMap((f) => f.tags))];
         setAllTags(tags);
       });
@@ -21,8 +22,12 @@ function Home() {
 
   const filtered = filaments.filter((f) => {
     const matchSearch = f.name.toLowerCase().includes(search.toLowerCase());
-    const matchTag = tag ? f.tags.includes(tag) : true;
-    return matchSearch && matchTag;
+    // if any tags are selected, filament must include all selected tags
+    const matchTags =
+      selectedTags.length > 0
+        ? selectedTags.every((tag) => f.tags.includes(tag))
+        : true;
+    return matchSearch && matchTags;
   });
 
   return (
@@ -30,8 +35,8 @@ function Home() {
       <SearchBar
         search={search}
         setSearch={setSearch}
-        tag={tag}
-        setTag={setTag}
+        selectedTags={selectedTags}
+        setSelectedTags={setSelectedTags}
         allTags={allTags}
       />
       <div className="grid">

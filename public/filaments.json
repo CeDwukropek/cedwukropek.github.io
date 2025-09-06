@@ -1,16 +1,25 @@
 [
   {
     "id": "pla-bialy-ironing",
-    "name": "PLA Biały (Ironing)",
-    "type": "PLA",
+    "name": "PLA Basic Biały Anycubic",
+    "type": "PLA Basic",
     "color": "Biały",
-    "tags": ["PLA", "Ironing", "Test", "Anycubic"],
+    "tags": ["PLA", "Basic", "Ironing", "Test", "Anycubic"],
     "settings": {
-      "temperature": "200°C",
-      "bed": "60°C",
-      "speed": "50mm/s",
-      "retraction": "0.8mm",
-      "flow": "100%"
+      "Printer Settings": {
+        "layer height": "0.2mm",
+        "temperature": "200°C",
+        "bed": "60°C"
+      },
+      "Printing Speeds": {
+        "speed": "50mm/s",
+        "retraction": "1mm",
+        "retraction speed": "25mm/s"
+      },
+      "Filament Details": {
+        "diameter": "1.75mm",
+        "flow": "98%"
+      }
     },
     "buyLink": "https://anycubicofficial.pl/products/filament-pla?_sasdk=dMTk5MWY4OGYxZjdlMTQtMGYxYmUxZjBiMDZkMDA4LTQ2NTA0YjU4LTIwNzM2MDAtMTk5MWY4OGYxZjgxMzcx",
     "image": "pla-bialy-ironing.jpg"
@@ -22,11 +31,17 @@
     "color": "Biały",
     "tags": ["PLA", "No-Ironing", "Anycubic"],
     "settings": {
-      "temperature": "200°C",
-      "bed": "60°C",
-      "speed": "50mm/s",
-      "retraction": "0.8mm",
-      "flow": "100%"
+      "Printer Settings": {
+        "temperature": "200°C",
+        "bed": "60°C"
+      },
+      "Printing Speeds": {
+        "speed": "50mm/s",
+        "retraction": "0.8mm"
+      },
+      "Filament Details": {
+        "flow": "100%"
+      }
     },
     "buyLink": "https://anycubicofficial.pl/products/filament-pla?_sasdk=dMTk5MWY4OGYxZjdlMTQtMGYxYmUxZjBiMDZkMDA4LTQ2NTA0YjU4LTIwNzM2MDAtMTk5MWY4OGYxZjgxMzcx",
     "image": "pla-bialy-noironing.jpg"
