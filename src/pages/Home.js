@@ -5,7 +5,7 @@ import SearchBar from "../components/SearchBar";
 function Home() {
   const [filaments, setFilaments] = useState([]);
   const [search, setSearch] = useState("");
-  // change from single tag to an array of selected tags
+  // change from single tag to multiple selectedTags
   const [selectedTags, setSelectedTags] = useState([]);
   const [allTags, setAllTags] = useState([]);
 
@@ -20,6 +20,7 @@ function Home() {
       });
   }, []);
 
+  // Adjust filtering if switching to multiple tag filtering.
   const filtered = filaments.filter((f) => {
     const matchSearch = f.name.toLowerCase().includes(search.toLowerCase());
     // if any tags are selected, filament must include all selected tags

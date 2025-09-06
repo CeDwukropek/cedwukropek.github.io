@@ -82,6 +82,7 @@ header {
   padding: 2px 8px;
   border-radius: 4px;
   margin-right: 4px;
+  margin-bottom: 4px;
   font-size: 0.8rem;
 }
 
@@ -204,17 +205,33 @@ body.dark .search-bar select {
   margin-top: 1rem;
 }
 
+.tag-group {
+  margin-bottom: 1rem;
+}
+
+.tag-group h5 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.tag-group-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
 .tag-button {
   background-color: var(--card-bg);
   color: var(--text);
   border: 1px solid var(--border);
   padding: 0.25rem 0.75rem;
-  border-radius: 1rem; /* pill shape */
+  border-radius: 1rem;
   cursor: pointer;
   font-size: 0.9rem;
   transition: background-color 0.2s ease, color 0.2s ease,
     border-color 0.2s ease;
-  margin-top: 0; /* override default button margin */
+  margin-top: 0;
   font-weight: 400;
 }
 
@@ -252,4 +269,100 @@ body.dark .search-bar select {
 
 .settings-section h4 {
   margin-bottom: 0.5rem;
+}
+
+/* Dropdown styling for tag groups */
+.dropdown-group {
+  position: relative;
+  display: inline-block;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.dropdown-toggle {
+  background-color: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  position: relative;
+}
+
+/* Add arrow icon via a pseudo-element */
+.dropdown-toggle::after {
+  content: "\25BC"; /* Unicode down arrow */
+  display: inline-block;
+  margin-left: 0.25rem;
+  transition: transform 0.2s ease;
+  transform: rotate(0deg); /* closed: arrow points down */
+}
+
+/* Rotate the arrow when open */
+.dropdown-toggle.open::after {
+  transform: rotate(180deg); /* open: arrow points up */
+}
+
+.dropdown-content {
+  position: absolute;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  z-index: 1000;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-block: 0.25rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dropdown-item:last-child {
+  padding-bottom: 0;
+}
+.dropdown-item:first-child {
+  padding-top: 0;
+}
+
+.dropdown-item input {
+  cursor: pointer;
+}
+
+/* Custom Checkbox in Dropdown */
+.dropdown-item input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 1px solid var(--border);
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+  border-radius: 2px;
+  position: relative;
+}
+
+.dropdown-item input[type="checkbox"]:checked {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.dropdown-item input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 3px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
