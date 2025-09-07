@@ -53,39 +53,73 @@ Projekt powstał jako narzędzie **do własnego użytku**, aby w jednym miejscu 
 
 ## 📂 Struktura projektu
 
-    ```
-    src/
-    ├── components/
-    │   ├── FilamentCard.js   # Karta filamentu (nazwa, tagi, ewentualnie obrazek)
-    │   ├── SearchBar.js      # Pasek wyszukiwania + filtry
-    │
-    ├── pages/
-    │   ├── Home.js           # Strona główna z listą filamentów
-    │
-    ├── data/
-    │   ├── filaments.json    # Dane filamentów (materiał, kolor, marka, cechy)
-    │
-    ├── App.js
-    └── index.js
-    ```
+```
+src/
+├── components/
+│   ├── FilamentCard.js   # Karta filamentu (nazwa, tagi, ewentualnie obrazek)
+│   ├── SearchBar.js      # Pasek wyszukiwania + filtry
+│
+├── pages/
+│   ├── Home.js           # Strona główna z listą filamentów
+│
+├── data/
+│   ├── filaments.json    # Dane filamentów (materiał, kolor, marka, cechy)
+│
+├── App.js
+└── index.js
+```
 
 ---
 
 ## 📑 Struktura danych (filaments.json)
 
-    ```json
-    {
-        "id": 1,
-        "name": "Anycubic PLA White",
-        "tags": {
-            "Material": ["PLA"],
-            "Brand": ["Anycubic"],
-            "Color": ["White"],
-            "Type": ["Basic"],
-            "Features": ["No-Ironing", "Mat"]
-        }
-    }
-    ```
+```json
+  {
+    "id": "1",
+    "name": "PLA Biały Anycubic",
+    "type": "PLA",
+    "color": "Biały",
+    "tags": {
+      "material": ["PLA"],
+      "type": ["Basic"],
+      "brand": ["Anycubic"],
+      "color": ["White"],
+      "features": ["Ironing", "Shiny"]
+    },
+    "settings": {
+      "Printer Settings": {
+        "layer height": "0.2mm",
+        "temperature": "190°C",
+        "bed": "60°C",
+        "glue": "not required"
+      },
+      "Printing Speeds": {
+        "inner wall": "50mm/s",
+        "outer wall": "50mm/s",
+        "infill": "60mm/s",
+        "initial layer": "15mm/s",
+        "travel": "150mm/s"
+      },
+      "Retraction": {
+        "length": "1mm",
+        "speed": "25mm/s"
+      },
+      "Filament Details": {
+        "diameter": "1.75mm",
+        "flow": "98%"
+      },
+      "Ironing": {
+        "pattern": "rectilinear",
+        "speed": "15mm/s",
+        "flow": "15%",
+        "line spacing": "0.1mm",
+        "inset": "0mm"
+      }
+    },
+    "buyLink": "https://anycubicofficial.pl/products/filament-pla?variant=44750313390389",
+    "image": "pla-bialy-ironing.jpg"
+  }
+```
 
 - id – unikalny identyfikator filamentu
 - name – nazwa filamentu (pokazywana w wyszukiwarce)
