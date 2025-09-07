@@ -152,7 +152,7 @@ src/
 
 ## 📌 TODO – pomysły na rozwój
 
--[ ] 🖼️ Dodanie zdjęć filamentów w kartach (FilamentCard)
+- [ ] 🖼️ Dodanie zdjęć filamentów w kartach (FilamentCard)
 - [ ] ⭐ System ocen/recenzji dla filamentów
 - [ ] 💾 Eksport listy przefiltrowanych filamentów do CSV/PDF
 - [ ] 🔄 Synchronizacja danych z lokalnym magazynem (np. IndexedDB)
