@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { tagGroupMapping } from "../utils/tagGroupMapping";
 
+
 function FilamentCard({ filament }) {
   // Group tags by group based on the mapping.
   const groupedTags = (filament.tags || []).reduce((acc, tag) => {
