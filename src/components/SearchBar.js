@@ -8,11 +8,15 @@ function SearchBar({ search, setSearch, selectedTags, setSelectedTags, groupedTa
     setOpenGroup(openGroup === groupName ? null : groupName);
   };
 
-  const handleTagToggle = (tag) => {
-    if (selectedTags.includes(tag)) {
-      setSelectedTags(selectedTags.filter((t) => t !== tag));
+  const handleTagToggle = (groupName, tag) => {
+    // Check if the tag from this group is already selected.
+    const exists = selectedTags.some(
+      (t) => t.group === groupName && t.tag === tag
+    );
+    if (exists) {
+      setSelectedTags(selectedTags.filter((t) => !(t.group === groupName && t.tag === tag)));
     } else {
-      setSelectedTags([...selectedTags, tag]);
+      setSelectedTags([...selectedTags, { group: groupName, tag }]);
     }
   };
 
@@ -46,8 +50,8 @@ function SearchBar({ search, setSearch, selectedTags, setSelectedTags, groupedTa
               <label key={tag} className="dropdown-item">
                 <input
                   type="checkbox"
-                  checked={selectedTags.includes(tag)}
-                  onChange={() => handleTagToggle(tag)}
+                  checked={selectedTags.some((t) => t.group === groupName && t.tag === tag)}
+                  onChange={() => handleTagToggle(groupName, tag)}
                 />
                 {tag}
               </label>
