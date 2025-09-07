@@ -49,12 +49,6 @@ function SearchBar({ search, setSearch, selectedTags, setSelectedTags, groupedTa
     };
   }, []);
 
-  // Funkcja do czyszczenia wszystkich zaznaczonych tagów w danej grupie
-  const clearGroup = (groupName) => {
-    setSelectedTags(selectedTags.filter((t) => t.group !== groupName));
-  };
-
-
   // Render dropdowna dla każdej grupy
   const renderTagGroup = (groupName, groupTags) => {
     if (!groupTags || groupTags.size === 0) return null;
