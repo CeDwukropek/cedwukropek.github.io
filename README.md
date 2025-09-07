@@ -1,72 +1,131 @@
-sdfdsf
+# 🎨 Filament Explorer
 
-# Getting Started with Create React App
+**Filament Explorer** to aplikacja webowa stworzona w **React**, która umożliwia szybkie wyszukiwanie i filtrowanie filamentów do druku 3D.  
+Projekt powstał jako narzędzie **do własnego użytku**, aby w jednym miejscu zebrać informacje o posiadanych filamentach i łatwo je przeszukiwać wg koloru, marki, materiału czy specjalnych właściwości.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+## ✨ Funkcjonalności
 
-In the project directory, you can run:
+- 🔎 **Wyszukiwanie** po nazwie filamentu (dynamiczne, bez przeładowania strony).
+- 🏷️ **Filtrowanie po tagach**, z automatycznym grupowaniem:
+  - Material
+  - Brand
+  - Color
+  - Type
+  - Features
+- ✅ **Zarządzanie filtrami**:
+  - Zaznaczanie/odznaczanie pojedynczych tagów
+  - **Toggle: "Zaznacz wszystkie / Wyczyść grupę"** dla każdej kategorii
+  - **Globalny przycisk "Wyczyść wszystkie filtry"**
+- 📊 **Łączenie filtrów** – możesz wybrać np. tylko _PLA_ + _Anycubic_ + _Czerwony_ i zobaczysz wszystkie spełniające kryteria filamenty.
+- 📱 **Responsywny interfejs** – wygodny także na urządzeniach mobilnych.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Jak uruchomić projekt
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **Sklonuj repozytorium**
 
-### `npm test`
+   ```bash
+   git clone https://github.com/twoj-login/filament-explorer.git
+   cd filament-explorer
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Zainstaluj zależności**
 
-### `npm run build`
+   ```
+   npm install
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Uruchom serwer deweloperski**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```
+   npm start
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. **Otwórz w przeglądarce**
+   ```
+   https://localhost:3000
+   ```
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 📂 Struktura projektu
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    ```
+    src/
+    ├── components/
+    │   ├── FilamentCard.js   # Karta filamentu (nazwa, tagi, ewentualnie obrazek)
+    │   ├── SearchBar.js      # Pasek wyszukiwania + filtry
+    │
+    ├── pages/
+    │   ├── Home.js           # Strona główna z listą filamentów
+    │
+    ├── data/
+    │   ├── filaments.json    # Dane filamentów (materiał, kolor, marka, cechy)
+    │
+    ├── App.js
+    └── index.js
+    ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📑 Struktura danych (filaments.json)
 
-## Learn More
+    ```json
+    {
+        "id": 1,
+        "name": "Anycubic PLA White",
+        "tags": {
+            "Material": ["PLA"],
+            "Brand": ["Anycubic"],
+            "Color": ["White"],
+            "Type": ["Basic"],
+            "Features": ["No-Ironing", "Mat"]
+        }
+    }
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- id – unikalny identyfikator filamentu
+- name – nazwa filamentu (pokazywana w wyszukiwarce)
+- tags – obiekt grupujący cechy filamentu według kategorii
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+👉 Dzięki temu tagi są dynamicznie zbierane i nie trzeba ich ręcznie mapować w kodzie.
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🖥️ Instrukcja obsługi
 
-### Analyzing the Bundle Size
+1. Wyszukiwanie
+   - Wpisz dowolną frazę w polu wyszukiwania, np. white, Anycubic.
+   - Lista filtruje się w czasie rzeczywistym.
+2. Filtrowanie
+   - Rozwiń kategorię (np. Material, Color).
+   - Zaznacz jeden lub więcej tagów.
+   - Możesz łączyć filtry z różnych kategorii.
+3. Zarządzanie filtrami
+   - Toggle grupy: Kliknij przycisk w nagłówku grupy, aby zaznaczyć wszystkie tagi. Kliknij ponownie, aby wyczyścić.
+   - Wyczyść wszystkie: Globalny przycisk resetujący wszystkie zaznaczone filtry.
+4. Łączenie filtrów
+   - Aplikacja pokazuje tylko filamenty spełniające każdy wybrany warunek.
+   - Przykład: jeśli wybierzesz PLA (Material) + Gray (Color) → zobaczysz tylko szare filamenty PLA.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 🛠️ Technologie
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- ️ [⚛️ React](https://react.dev/) – framework do budowy interfejsu
+- [📜 JavaScript (ES6+)](https://developer.mozilla.org/pl/docs/Web/JavaScript)
+- 🎨 [CSS / Tailwind] – stylizacja komponentów
+- [📦 npm](https://www.npmjs.com) – zarządzanie zależnościami
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📌 TODO – pomysły na rozwój
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 🖼️ Dodanie zdjęć filamentów w kartach (FilamentCard)
+- ⭐ System ocen/recenzji dla filamentów
+- 💾 Eksport listy przefiltrowanych filamentów do CSV/PDF
+- 🔄 Synchronizacja danych z lokalnym magazynem (np. IndexedDB)
+- ☁️ Integracja z bazą w chmurze (np. Firebase, Supabase)

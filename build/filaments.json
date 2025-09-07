@@ -1,8 +1,8 @@
 [
   {
     "id": "1",
-    "name": "PLA Basic Biały Anycubic",
-    "type": "PLA Basic",
+    "name": "PLA Biały Anycubic",
+    "type": "PLA",
     "color": "Biały",
     "tags": {
       "material": ["PLA"],
@@ -15,7 +15,8 @@
       "Printer Settings": {
         "layer height": "0.2mm",
         "temperature": "190°C",
-        "bed": "60°C"
+        "bed": "60°C",
+        "glue": "not required"
       },
       "Printing Speeds": {
         "inner wall": "50mm/s",
@@ -31,6 +32,13 @@
       "Filament Details": {
         "diameter": "1.75mm",
         "flow": "98%"
+      },
+      "Ironing": {
+        "pattern": "rectilinear",
+        "speed": "15mm/s",
+        "flow": "15%",
+        "line spacing": "0.1mm",
+        "inset": "0mm"
       }
     },
     "buyLink": "https://anycubicofficial.pl/products/filament-pla?variant=44750313390389",
@@ -38,7 +46,7 @@
   },
   {
     "id": "2",
-    "name": "PLA Basic Biały Anycubic",
+    "name": "PLA Biały Anycubic",
     "type": "PLA",
     "color": "Biały",
     "tags": {
@@ -52,7 +60,8 @@
       "Printer Settings": {
         "layer height": "0.2mm",
         "temperature": "190°C",
-        "bed": "60°C"
+        "bed": "60°C",
+        "glue": "not required"
       },
       "Printing Speeds": {
         "inner wall": "50mm/s",
@@ -68,6 +77,13 @@
       "Filament Details": {
         "diameter": "1.75mm",
         "flow": "98%"
+      },
+      "Ironing": {
+        "pattern": "no data",
+        "speed": "no data",
+        "flow": "no data",
+        "line spacing": "no data",
+        "inset": "no data"
       }
     },
     "buyLink": "https://anycubicofficial.pl/products/filament-pla?variant=44750313390389",
@@ -75,7 +91,7 @@
   },
   {
     "id": "3",
-    "name": "PLA Basic Szary Anycubic",
+    "name": "PLA Szary Anycubic",
     "type": "PLA",
     "color": "Szary",
     "tags": {
@@ -89,7 +105,8 @@
       "Printer Settings": {
         "layer height": "0.2mm",
         "temperature": "190°C",
-        "bed": "60°C"
+        "bed": "60°C",
+        "glue": "not required"
       },
       "Printing Speeds": {
         "inner wall": "50mm/s",
@@ -105,6 +122,13 @@
       "Filament Details": {
         "diameter": "1.75mm",
         "flow": "98%"
+      },
+      "Ironing": {
+        "pattern": "no data",
+        "speed": "no data",
+        "flow": "no data",
+        "line spacing": "no data",
+        "inset": "no data"
       }
     },
     "buyLink": "https://anycubicofficial.pl/products/filament-pla?variant=44750313521461",
@@ -112,7 +136,7 @@
   },
   {
     "id": "4",
-    "name": "PLA Basic Czarny Anycubic",
+    "name": "PLA Czarny Anycubic",
     "type": "PLA",
     "color": "Czarny",
     "tags": {
@@ -126,7 +150,8 @@
       "Printer Settings": {
         "layer height": "0.2mm",
         "temperature": "190°C",
-        "bed": "60°C"
+        "bed": "60°C",
+        "glue": "not required"
       },
       "Printing Speeds": {
         "inner wall": "50mm/s",
@@ -142,6 +167,13 @@
       "Filament Details": {
         "diameter": "1.75mm",
         "flow": "98%"
+      },
+      "Ironing": {
+        "pattern": "no data",
+        "speed": "no data",
+        "flow": "no data",
+        "line spacing": "no data",
+        "inset": "no data"
       }
     },
     "buyLink": "https://anycubicofficial.pl/products/filament-pla?variant=44750313488693",
@@ -149,7 +181,7 @@
   },
   {
     "id": "5",
-    "name": "PLA Basic Czerwony Plexiwire",
+    "name": "PLA Czerwony Plexiwire",
     "type": "PLA",
     "color": "Czerwony",
     "tags": {
@@ -163,7 +195,8 @@
       "Printer Settings": {
         "layer height": "0.2mm",
         "temperature": "190°C",
-        "bed": "60°C"
+        "bed": "60°C",
+        "glue": "not required"
       },
       "Printing Speeds": {
         "inner wall": "50mm/s",
@@ -179,6 +212,13 @@
       "Filament Details": {
         "diameter": "1.75mm",
         "flow": "98%"
+      },
+      "Ironing": {
+        "pattern": "no data",
+        "speed": "no data",
+        "flow": "no data",
+        "line spacing": "no data",
+        "inset": "no data"
       }
     },
     "buyLink": "https://allegro.pl/oferta/filament-pla-plexiwire-1-75-mm-czerwony-900g-300m-12926282260?context=bb0d91481d9e9429596ec70f8ec5a6426c181630e0acda06b35d7239162267622b19c93790ed87b34031938b2ff4eb5adcc4f4a4a0c746f665f9b303d23a697ab5e435d9fabccbd2421d0baf935f2ab329cd5b376e028a793d9926ac79e48f9cf880585c88e3883128a508ebba60223ab81779aabac3e0bba1eaa33e553ab57b65270bd9a0dad2a32b7159b294a31825&sellerHasChanged=false&fromVariant=16434446767",
@@ -186,7 +226,7 @@
   },
   {
     "id": "6",
-    "name": "PLA Basic Zielony Plexiwire",
+    "name": "PLA Zielony Plexiwire",
     "type": "PLA",
     "color": "Zielony",
     "tags": {
@@ -200,7 +240,8 @@
       "Printer Settings": {
         "layer height": "0.2mm",
         "temperature": "190°C",
-        "bed": "60°C"
+        "bed": "60°C",
+        "glue": "not required"
       },
       "Printing Speeds": {
         "inner wall": "50mm/s",
@@ -216,6 +257,13 @@
       "Filament Details": {
         "diameter": "1.75mm",
         "flow": "98%"
+      },
+      "Ironing": {
+        "pattern": "no data",
+        "speed": "no data",
+        "flow": "no data",
+        "line spacing": "no data",
+        "inset": "no data"
       }
     },
     "buyLink": "https://allegro.pl/oferta/filament-pla-plexiwire-1-75-mm-zielony-900g-300m-12926376448?context=bb0d91481d9e9429596ec70f8ec5a6426c181630e0acda06b35d7239162267622b19c93790ed87b34031938b2ff4eb5adcc4f4a4a0c746f665f9b303d23a697ab5e435d9fabccbd2421d0baf935f2ab329cd5b376e028a793d9926ac79e48f9cf880585c88e3883128a508ebba60223ab81779aabac3e0bba1eaa33e553ab57b65270bd9a0dad2a32b7159b294a31825&sellerHasChanged=false&fromVariant=12926282260",
@@ -223,7 +271,7 @@
   },
   {
     "id": "7",
-    "name": "PLA Basic Błekitny Plexiwire",
+    "name": "PLA Błekitny Plexiwire",
     "type": "PLA",
     "color": "Błekitny",
     "tags": {
@@ -237,7 +285,8 @@
       "Printer Settings": {
         "layer height": "0.2mm",
         "temperature": "190°C",
-        "bed": "60°C"
+        "bed": "60°C",
+        "glue": "not required"
       },
       "Printing Speeds": {
         "inner wall": "50mm/s",
@@ -253,6 +302,13 @@
       "Filament Details": {
         "diameter": "1.75mm",
         "flow": "98%"
+      },
+      "Ironing": {
+        "pattern": "no data",
+        "speed": "no data",
+        "flow": "no data",
+        "line spacing": "no data",
+        "inset": "no data"
       }
     },
     "buyLink": "https://allegro.pl/oferta/filament-plexiwire-pla-blue-niebieski-900g-300m-15198390973",
@@ -264,7 +320,7 @@
     "type": "TPU",
     "color": "Błekitny",
     "tags": {
-      "material": ["PLA"],
+      "material": ["TPU"],
       "type": ["95A"],
       "brand": ["None"],
       "color": ["Orange"],
@@ -274,7 +330,8 @@
       "Printer Settings": {
         "layer height": "0.2mm",
         "temperature": "210°C",
-        "bed": "70°C"
+        "bed": "70°C",
+        "glue": "not required"
       },
       "Printing Speeds": {
         "inner wall": "25mm/s",
@@ -284,15 +341,67 @@
         "travel": "120mm/s"
       },
       "Retraction": {
+        "length": "no data",
+        "speed": "no data"
+      },
+      "Filament Details": {
+        "diameter": "1.75mm",
+        "flow": "98%"
+      },
+      "Ironing": {
+        "pattern": "no data",
+        "speed": "no data",
+        "flow": "no data",
+        "line spacing": "no data",
+        "inset": "no data"
+      }
+    },
+    "buyLink": "https://pl.aliexpress.com/item/1005009110562591.html?src=google&pdp_npi=4%40dis!PLN!122.47!58.99!!!!!%40!12000047959285630!ppc!!!&snps=y&snpsid=1&src=google&albch=shopping&acnt=897-548-8760&isdl=y&slnk=&plac=&mtctp=&albbt=Google_7_shopping&aff_platform=google&aff_short_key=_oDeeeiG&gclsrc=aw.ds&&albagn=888888&&ds_e_adid=746616099974&ds_e_matchtype=search&ds_e_device=c&ds_e_network=g&ds_e_product_group_id=2432726605827&ds_e_product_id=pl1005009110562591&ds_e_product_merchant_id=5551326180&ds_e_product_country=PL&ds_e_product_language=pl&ds_e_product_channel=online&ds_e_product_store_id=&ds_url_v=2&albcp=22441419261&albag=186573352268&isSmbAutoCall=false&needSmbHouyi=false&gad_source=1&gad_campaignid=22441419261&gclid=CjwKCAjwt-_FBhBzEiwA7QEqyCUkqL3E1f9MjOGzM8VccX3FqaXdiRCu6kl6VP1jpVfYz-xoZsbs9BoC8hsQAvD_BwE",
+    "image": "pla-bialy-noironing.jpg"
+  },
+  {
+    "id": "9",
+    "name": "PLA+ Lemon Yellow Sunlu",
+    "type": "PLA+",
+    "color": "Cytrynowo-żółty",
+    "tags": {
+      "material": ["PLA"],
+      "type": ["+"],
+      "brand": ["Sunlu"],
+      "color": ["Lemon Yellow"],
+      "features": ["No-Ironing", "Matte"]
+    },
+    "settings": {
+      "Printer Settings": {
+        "layer height": "0.2mm",
+        "temperature": "190°C",
+        "bed": "60°C",
+        "glue": "not required"
+      },
+      "Printing Speeds": {
+        "inner wall": "50mm/s",
+        "outer wall": "50mm/s",
+        "infill": "60mm/s",
+        "initial layer": "15mm/s",
+        "travel": "150mm/s"
+      },
+      "Retraction": {
         "length": "1mm",
         "speed": "25mm/s"
       },
       "Filament Details": {
         "diameter": "1.75mm",
         "flow": "98%"
+      },
+      "Ironing": {
+        "pattern": "no data",
+        "speed": "no data",
+        "flow": "no data",
+        "line spacing": "no data",
+        "inset": "no data"
       }
     },
-    "buyLink": "https://pl.aliexpress.com/item/1005009110562591.html?src=google&pdp_npi=4%40dis!PLN!122.47!58.99!!!!!%40!12000047959285630!ppc!!!&snps=y&snpsid=1&src=google&albch=shopping&acnt=897-548-8760&isdl=y&slnk=&plac=&mtctp=&albbt=Google_7_shopping&aff_platform=google&aff_short_key=_oDeeeiG&gclsrc=aw.ds&&albagn=888888&&ds_e_adid=746616099974&ds_e_matchtype=search&ds_e_device=c&ds_e_network=g&ds_e_product_group_id=2432726605827&ds_e_product_id=pl1005009110562591&ds_e_product_merchant_id=5551326180&ds_e_product_country=PL&ds_e_product_language=pl&ds_e_product_channel=online&ds_e_product_store_id=&ds_url_v=2&albcp=22441419261&albag=186573352268&isSmbAutoCall=false&needSmbHouyi=false&gad_source=1&gad_campaignid=22441419261&gclid=CjwKCAjwt-_FBhBzEiwA7QEqyCUkqL3E1f9MjOGzM8VccX3FqaXdiRCu6kl6VP1jpVfYz-xoZsbs9BoC8hsQAvD_BwE",
+    "buyLink": "https://www.amazon.pl/SUNLU-Cytrynowo-Żólty-Sloneczny-Pomarańcz-Wiśniowo-Czerwony/dp/B0BTNT7PTM/ref=sr_1_1_sspa?__mk_pl_PL=ÅMÅŽÕÑ&crid=2CVB5QV6WTGIE&dib=eyJ2IjoiMSJ9.2976J60TZ4Rtd2ITcdA8cySUOjBHrqKORWHI4tgjhp-5f5KmMJuKJhWdZoDogkPm0OvzQfsEIeDG93VVjZB6Ox3sKKaBN70m1nQKsD3dPUvcZPa5dfzte4r_9ovrAP6kCGfh4JCghqjFE6MF5JEX08u2ctAz7jV5zuvMjIxAttH-BvIFHo86ib6p2S86upVzKTmVaOOrFuXfvVPb02MhFEuHV_vki9EdHSUsDB9PL__le9gYJwye6_Njk3AjyNRlNz4JKCv4gL74dp97Of6ytVJq93h5XwhYmBLeTYQt3wo.nlLlQbvZZKuLJ4p1awfAibR0J9WHoxNpCmGjqge7R8A&dib_tag=se&keywords=pla%2Bsunlu%2BCytrynowo-Żółty&qid=1757237924&sprefix=pla%2Bsunlu%2Bcytrynowo-żółty%2Caps%2C123&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1",
     "image": "pla-bialy-noironing.jpg"
   }
 ]
