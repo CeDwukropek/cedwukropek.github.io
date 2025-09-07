@@ -173,20 +173,6 @@ button {
   transition: background-color 0.2s ease-in-out;
 }
 
-button.clear-group-btn {
-  background-color: transparent;
-  color: #acacac;
-  font-weight: 400;
-  font-size: 0.8rem;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-}
-
-button.clear-group-btn:hover {
-  color: var(--accent-hover);
-  background-color: transparent;
-}
-
 button:hover {
   background-color: var(--accent-hover);
 }
@@ -315,7 +301,6 @@ body.dark .dark-mode-toggle {
 }
 
 .dropdown-toggle {
-  position: relative;
   background-color: var(--card-bg);
   color: var(--text);
   border: 1px solid var(--border);
@@ -422,46 +407,4 @@ body.dark .dark-mode-toggle {
 
 .tag.features {
   background-color: var(--group-features);
-}
-
-.selected-count {
-  display: inline-block;
-  background-color: var(--accent);
-  color: #fff;
-  font-size: 0.7rem;
-  width: 16px;
-  height: 16px;
-  border-radius: 3px;
-  text-align: center;
-  margin-left: 0.5rem;
-  line-height: 18px;
-}
-
-.filters-header {
-  margin-bottom: 10px;
-  text-align: right;
-}
-
-.clear-all-btn {
-  padding: 4px 8px;
-  background-color: var(--card-bg);
-  color: var(--text);
-  border: 1px solid var(--border);
-  cursor: pointer;
-  border-radius: 6px;
-}
-
-.toggle-group-btn {
-  padding: 0.25rem;
-  font-size: 0.8em;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: #007bff;
-  white-space: nowrap;
-}
-
-.toggle-group-btn:hover {
-  text-decoration: underline;
-  background: transparent;
 }
