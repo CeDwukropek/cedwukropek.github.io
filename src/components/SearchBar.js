@@ -3,11 +3,27 @@ import React, { useState, useRef, useEffect } from "react";
 function SearchBar({ search, setSearch, selectedTags, setSelectedTags, groupedTags }) {
   const [openGroup, setOpenGroup] = useState(null);
   const containerRef = useRef(null);
+  // Wyczyść wszystkie filtry
+  const clearAll = () => {
+    setSelectedTags([]);
+  };
 
   const toggleGroup = (groupName) => {
     setOpenGroup(openGroup === groupName ? null : groupName);
   };
 
+  // Toggle dla grupy (jeśli coś zaznaczone -> usuń, jeśli nic -> włącz wszystkie)
+  const toggleGroupSelection = (groupName, groupTags) => {
+    const selectedInGroup = selectedTags.filter((t) => t.group === groupName);
+    if (selectedInGroup.length > 0) {
+      // coś zaznaczone → czyścimy grupę
+      setSelectedTags(selectedTags.filter((t) => t.group !== groupName));
+    } else {
+      // nic zaznaczone → zaznaczamy wszystkie
+      const newSelections = [...groupTags].map((tag) => ({ group: groupName, tag }));
+      setSelectedTags([...selectedTags, ...newSelections]);
+    }
+  };
   const handleTagToggle = (groupName, tag) => {
     // Check if the tag from this group is already selected.
     const exists = selectedTags.some(
@@ -33,17 +49,31 @@ function SearchBar({ search, setSearch, selectedTags, setSelectedTags, groupedTa
     };
   }, []);
 
+  // Funkcja do czyszczenia wszystkich zaznaczonych tagów w danej grupie
+  const clearGroup = (groupName) => {
+    setSelectedTags(selectedTags.filter((t) => t.group !== groupName));
+  };
+
+
   // Render dropdowna dla każdej grupy
   const renderTagGroup = (groupName, groupTags) => {
     if (!groupTags || groupTags.size === 0) return null;
+    // Calculate how many filters are selected in the current group.
+    const count = selectedTags.filter((t) => t.group === groupName).length;
     return (
       <div key={groupName} className="dropdown-group">
-        <button
-          className={`dropdown-toggle ${openGroup === groupName ? "open" : ""}`}
-          onClick={() => toggleGroup(groupName)}
-        >
-          {groupName}
-        </button>
+<button
+  className={`dropdown-toggle ${openGroup === groupName ? "open" : ""}`}
+  onClick={() => toggleGroup(groupName)}
+>
+  {groupName}
+  {count > 0 && (
+    <span className="selected-count">
+      {count}
+    </span>
+  )}
+</button>
+
         {openGroup === groupName && (
           <div className="dropdown-content">
             {[...groupTags].map((tag) => (
@@ -56,6 +86,15 @@ function SearchBar({ search, setSearch, selectedTags, setSelectedTags, groupedTa
                 {tag}
               </label>
             ))}
+            <button
+              className="toggle-group-btn"
+              onClick={(e) => {
+                e.stopPropagation(); // nie zamykaj dropdownu
+                toggleGroupSelection(groupName, groupTags);
+              }}
+            >
+              {count > 0 ? "Wyczyść grupę" : "Zaznacz wszystkie"}
+            </button>
           </div>
         )}
       </div>
@@ -73,6 +112,11 @@ function SearchBar({ search, setSearch, selectedTags, setSelectedTags, groupedTa
         />
       </div>
       <div className="dropdown-filter">
+        <div className="filters-header">
+          <button className="clear-all-btn" onClick={clearAll}>
+            Wyczyść wszystkie filtry
+          </button>
+        </div>
         {Object.entries(groupedTags).map(([groupName, groupTags]) =>
           renderTagGroup(groupName, groupTags)
         )}
