@@ -215,5 +215,42 @@
     },
     "buyLink": "https://allegro.pl/oferta/filament-plexiwire-pla-blue-niebieski-900g-300m-15198390973",
     "image": "pla-bialy-noironing.jpg"
+  },
+  {
+    "id": "8",
+    "name": "TPU 95A",
+    "type": "TPU",
+    "color": "Błekitny",
+    "tags": {
+      "material": ["PLA"],
+      "type": ["95A"],
+      "brand": ["None"],
+      "color": ["Orange"],
+      "features": ["No-Ironing", "Shiny"]
+    },
+    "settings": {
+      "Printer Settings": {
+        "layer height": "0.2mm",
+        "temperature": "210°C",
+        "bed": "70°C"
+      },
+      "Printing Speeds": {
+        "inner wall": "25mm/s",
+        "outer wall": "25mm/s",
+        "infill": "30mm/s",
+        "initial layer": "15mm/s",
+        "travel": "120mm/s"
+      },
+      "Retraction": {
+        "length": "1mm",
+        "speed": "25mm/s"
+      },
+      "Filament Details": {
+        "diameter": "1.75mm",
+        "flow": "98%"
+      }
+    },
+    "buyLink": "https://pl.aliexpress.com/item/1005009110562591.html?src=google&pdp_npi=4%40dis!PLN!122.47!58.99!!!!!%40!12000047959285630!ppc!!!&snps=y&snpsid=1&src=google&albch=shopping&acnt=897-548-8760&isdl=y&slnk=&plac=&mtctp=&albbt=Google_7_shopping&aff_platform=google&aff_short_key=_oDeeeiG&gclsrc=aw.ds&&albagn=888888&&ds_e_adid=746616099974&ds_e_matchtype=search&ds_e_device=c&ds_e_network=g&ds_e_product_group_id=2432726605827&ds_e_product_id=pl1005009110562591&ds_e_product_merchant_id=5551326180&ds_e_product_country=PL&ds_e_product_language=pl&ds_e_product_channel=online&ds_e_product_store_id=&ds_url_v=2&albcp=22441419261&albag=186573352268&isSmbAutoCall=false&needSmbHouyi=false&gad_source=1&gad_campaignid=22441419261&gclid=CjwKCAjwt-_FBhBzEiwA7QEqyCUkqL3E1f9MjOGzM8VccX3FqaXdiRCu6kl6VP1jpVfYz-xoZsbs9BoC8hsQAvD_BwE",
+    "image": "pla-bialy-noironing.jpg"
   }
 ]
