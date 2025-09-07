@@ -5,6 +5,7 @@ function FilamentDetail() {
   const { id } = useParams();
   const [filament, setFilament] = useState(null);
   const [note, setNote] = useState("");
+  const [copied, setCopied] = useState(null); // przechowuje klucz ustawienia które skopiowaliśmy
 
   useEffect(() => {
     fetch("/filaments.json")
@@ -18,6 +19,13 @@ function FilamentDetail() {
 
   const saveNote = () => {
     localStorage.setItem(`note-${id}`, note);
+  };
+
+  const copyValue = (key, val) => {
+    const number = val.toString().match(/\d+(\.\d+)?/)?.[0] || val;
+    navigator.clipboard.writeText(number);
+    setCopied(key);
+    setTimeout(() => setCopied(null), 1500); // tooltip znika po 1.5s
   };
 
   if (!filament) return <p>Ładowanie...</p>;
@@ -35,7 +43,16 @@ function FilamentDetail() {
           <ul>
             {Object.entries(settings).map(([key, val]) => (
               <li key={key}>
-                {key}: {val}
+                {key}:{" "}
+                <span
+                  className="copyable"
+                  onClick={() => copyValue(key, val)}
+                >
+                  {val}
+                </span>
+                {copied === key && (
+                  <span className="tooltip">Skopiowano!</span>
+                )}
               </li>
             ))}
           </ul>
