@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 function FilamentCard({ filament }) {
   const temperature =
     filament.settings?.["Printer Settings"]?.temperature || "";
