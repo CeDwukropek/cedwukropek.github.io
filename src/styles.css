@@ -448,8 +448,9 @@ body.dark .dark-mode-toggle {
 }
 
 .filters-header {
+  position: relative;
+  display: inline-block;
   margin-bottom: 10px;
-  text-align: right;
 }
 
 .clear-all-btn {
@@ -459,6 +460,7 @@ body.dark .dark-mode-toggle {
   border: 1px solid var(--border);
   cursor: pointer;
   border-radius: 6px;
+  font-size: 0.9rem;
 }
 
 .toggle-group-btn {
