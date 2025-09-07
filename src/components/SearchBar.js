@@ -56,17 +56,17 @@ function SearchBar({ search, setSearch, selectedTags, setSelectedTags, groupedTa
     const count = selectedTags.filter((t) => t.group === groupName).length;
     return (
       <div key={groupName} className="dropdown-group">
-<button
-  className={`dropdown-toggle ${openGroup === groupName ? "open" : ""}`}
-  onClick={() => toggleGroup(groupName)}
->
-  {groupName}
-  {count > 0 && (
-    <span className="selected-count">
-      {count}
-    </span>
-  )}
-</button>
+        <button
+          className={`dropdown-toggle ${openGroup === groupName ? "open" : ""}`}
+          onClick={() => toggleGroup(groupName)}
+        >
+          {groupName}
+          {count > 0 && (
+            <span className="selected-count">
+              {count}
+            </span>
+          )}
+        </button>
 
         {openGroup === groupName && (
           <div className="dropdown-content">
@@ -106,14 +106,14 @@ function SearchBar({ search, setSearch, selectedTags, setSelectedTags, groupedTa
         />
       </div>
       <div className="dropdown-filter">
-        <div className="filters-header">
-          <button className="clear-all-btn" onClick={clearAll}>
-            Wyczyść wszystkie filtry
-          </button>
-        </div>
         {Object.entries(groupedTags).map(([groupName, groupTags]) =>
           renderTagGroup(groupName, groupTags)
         )}
+        <div className="filters-header">
+          <button className="clear-all-btn" onClick={clearAll}>
+            Wyczyść filtry
+          </button>
+        </div>
       </div>
     </div>
   );

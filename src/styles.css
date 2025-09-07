@@ -312,6 +312,10 @@ body.dark .dark-mode-toggle {
   margin-bottom: 0.5rem;
 }
 
+.settings-section ul li {
+  color: #bebebe;
+}
+
 /* Dropdown styling for tag groups */
 .dropdown-group {
   position: relative;
@@ -444,8 +448,9 @@ body.dark .dark-mode-toggle {
 }
 
 .filters-header {
+  position: relative;
+  display: inline-block;
   margin-bottom: 10px;
-  text-align: right;
 }
 
 .clear-all-btn {
@@ -455,6 +460,7 @@ body.dark .dark-mode-toggle {
   border: 1px solid var(--border);
   cursor: pointer;
   border-radius: 6px;
+  font-size: 0.9rem;
 }
 
 .toggle-group-btn {
@@ -470,4 +476,49 @@ body.dark .dark-mode-toggle {
 .toggle-group-btn:hover {
   text-decoration: underline;
   background: transparent;
+}
+
+.copyable {
+  cursor: pointer;
+  color: var(--text);
+  position: relative;
+}
+
+.copyable:hover {
+  text-decoration: underline;
+}
+
+.tooltip {
+  margin-left: 8px;
+  font-size: 0.85em;
+  color: rgb(156, 156, 156);
+  animation: fadeOut 1.5s forwards;
+}
+
+.settings-section {
+  margin-bottom: 10px;
+}
+
+.collapsible {
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.collapsible:hover {
+  color: #007bff;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
