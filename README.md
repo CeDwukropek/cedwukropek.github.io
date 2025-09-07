@@ -158,3 +158,4 @@ src/
 - [ ] 🔄 Synchronizacja danych z lokalnym magazynem (np. IndexedDB)
 - [ ] ☁️ Integracja z bazą w chmurze (np. Firebase, Supabase)
 - [ ] ♻️ Kopiowanie wartości przez kliknięcie myszką
+- [ ] ↔️ import/export ze slicera
