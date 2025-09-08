@@ -47,10 +47,39 @@ function FilamentDetail() {
 
   if (!filament) return <p>Ładowanie...</p>;
 
+  // Define the desired order for groups.
+  const groupOrder = ["material", "type", "brand", "color", "features"];
+
+  // Flatten the tags object into an array with group information.
+  let sortedTags = [];
+  if (filament.tags) {
+    // First, add tags from groups in order.
+    groupOrder.forEach((group) => {
+      if (filament.tags[group]) {
+        sortedTags = sortedTags.concat(
+          filament.tags[group].map((tag) => ({ group, tag }))
+        );
+      }
+    });
+    // Then, add any remaining groups not defined in groupOrder.
+    Object.entries(filament.tags).forEach(([group, tags]) => {
+      if (!groupOrder.includes(group)) {
+        sortedTags = sortedTags.concat(tags.map((tag) => ({ group, tag })));
+      }
+    });
+  }
+
   return (
     <div className="detail">
       <Link to="/">← Powrót</Link>
       <h2>{filament.name}</h2>
+      <div className="tags">
+        {sortedTags.map(({ group, tag }) => (
+          <span key={`${group}-${tag}`} className={`tag ${group}`}>
+            {tag}
+          </span>
+        ))}
+      </div>
       <p>
         <b>Typ:</b> {filament.type}
       </p>
