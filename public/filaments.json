@@ -234,7 +234,7 @@
       "type": ["Basic"],
       "brand": ["Plexiwire"],
       "color": ["Green"],
-      "features": ["No-Ironing", "Shiny"]
+      "features": ["No-Ironing", "Matte"]
     },
     "settings": {
       "Printer Settings": {
@@ -271,7 +271,7 @@
   },
   {
     "id": "7",
-    "name": "PLA Błekitny Plexiwire",
+    "name": "PLA Błękitny Plexiwire",
     "type": "PLA",
     "quantity": 0,
     "tags": {
@@ -279,14 +279,14 @@
       "type": ["Basic"],
       "brand": ["Plexiwire"],
       "color": ["Blue"],
-      "features": ["No-Ironing", "Shiny"]
+      "features": ["No-Ironing", "Matte"]
     },
     "settings": {
       "Printer Settings": {
         "layer height": "0.2mm",
         "temperature": "190°C",
         "bed": "60°C",
-        "glue": "not required"
+        "glue": "required"
       },
       "Printing Speeds": {
         "inner wall": "50mm/s",
