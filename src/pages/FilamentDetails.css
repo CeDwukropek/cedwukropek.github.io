@@ -45,6 +45,10 @@
   }
 }
 
+.quantity.superior {
+  color: #96eaff; /* niebieski */
+  font-weight: 600;
+}
 .quantity.high {
   color: #4ade80; /* zielony */
   font-weight: 600;
@@ -55,6 +59,10 @@
 }
 .quantity.low {
   color: #f87171; /* czerwony */
+  font-weight: 600;
+}
+.quantity.extremlyLow {
+  color: #f73898; /* czerwony */
   font-weight: 600;
 }
 

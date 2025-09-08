@@ -84,17 +84,21 @@ function FilamentDetail() {
 
       <div className="info-grid">
         <p>
-          <b>Typ:</b> {filament.type}
+          <b>Typ:</b> {sortedTags[0].tag} {sortedTags[1].tag}
         </p>
         <p>
           <b>Dostępność:</b>{" "}
           <span
             className={`quantity ${
-              filament.quantity >= 1000
+              filament.quantity > 1000
+                ? "superior"
+                : filament.quantity >= 500
                 ? "high"
-                : filament.quantity >= 300
+                : filament.quantity >= 250
                 ? "medium"
-                : "low"
+                : filament.quantity > 100
+                ? "low"
+                : "extremlyLow"
             }`}
           >
             {filament.quantity}g

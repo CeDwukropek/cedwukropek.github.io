@@ -1,0 +1,46 @@
+[
+  {
+    "id": "",
+    "name": "",
+    "quantity": null,
+    "tags": {
+      "material": [],
+      "type": [],
+      "brand": [],
+      "color": [],
+      "features": []
+    },
+    "settings": {
+      "Printer Settings": {
+        "layer height": "0.2mm",
+        "temperature": "190°C",
+        "bed": "60°C",
+        "glue": "not required"
+      },
+      "Printing Speeds": {
+        "inner wall": "50mm/s",
+        "outer wall": "50mm/s",
+        "infill": "60mm/s",
+        "initial layer": "15mm/s",
+        "travel": "150mm/s"
+      },
+      "Retraction": {
+        "length": "1mm",
+        "speed": "25mm/s"
+      },
+      "Filament Details": {
+        "diameter": "1.75mm",
+        "flow": "98%"
+      },
+      "Ironing": {
+        "pattern": "no data",
+        "speed": "no data",
+        "flow": "no data",
+        "line spacing": "no data",
+        "inset": "no data"
+      }
+    },
+    "buyLink": "",
+    "image": ""
+  }
+]
