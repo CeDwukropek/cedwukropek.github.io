@@ -51,15 +51,27 @@ function FilamentDetail() {
     <div className="detail">
       <Link to="/">← Powrót</Link>
       <h2>{filament.name}</h2>
-      <p><b>Typ:</b> {filament.type}</p>
-      <p><b>Kolor:</b> {filament.color}</p>
+      <p>
+        <b>Typ:</b> {filament.type}
+      </p>
+      <p>
+        <b>Dostępność:</b>{" "}
+        <span
+          className={
+            filament.quantity >= 1000
+              ? "high"
+              : filament.quantity >= 300
+              ? "medium"
+              : "low"
+          }
+        >
+          {filament.quantity}g
+        </span>
+      </p>
       <h3>Ustawienia druku:</h3>
       {Object.entries(filament.settings).map(([section, settings]) => (
         <div key={section} className="settings-section">
-          <h4
-            className="collapsible"
-            onClick={() => toggleSection(section)}
-          >
+          <h4 className="collapsible" onClick={() => toggleSection(section)}>
             {section} {openSections[section] ? "▲" : "▼"}
           </h4>
           {openSections[section] && (
@@ -86,10 +98,7 @@ function FilamentDetail() {
         Kup ten filament
       </a>
       <h3>Twoje notatki:</h3>
-      <textarea
-        value={note}
-        onChange={(e) => setNote(e.target.value)}
-      />
+      <textarea value={note} onChange={(e) => setNote(e.target.value)} />
       <button onClick={saveNote}>Zapisz</button>
     </div>
   );

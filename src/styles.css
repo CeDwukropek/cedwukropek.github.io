@@ -522,3 +522,15 @@ body.dark .dark-mode-toggle {
     opacity: 0;
   }
 }
+
+.high {
+  color: #61ff76;
+}
+
+.medium {
+  color: #ffb340;
+}
+
+.low {
+  color: #ff5f5f;
+}

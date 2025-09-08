@@ -3,7 +3,7 @@
     "id": "1",
     "name": "PLA Biały Anycubic",
     "type": "PLA",
-    "color": "Biały",
+    "quantity": 1000,
     "tags": {
       "material": ["PLA"],
       "type": ["Basic"],
@@ -48,7 +48,7 @@
     "id": "2",
     "name": "PLA Biały Anycubic",
     "type": "PLA",
-    "color": "Biały",
+    "quantity": 0,
     "tags": {
       "material": ["PLA"],
       "type": ["Basic"],
@@ -93,7 +93,7 @@
     "id": "3",
     "name": "PLA Szary Anycubic",
     "type": "PLA",
-    "color": "Szary",
+    "quantity": 0,
     "tags": {
       "material": ["PLA"],
       "type": ["Basic"],
@@ -138,7 +138,7 @@
     "id": "4",
     "name": "PLA Czarny Anycubic",
     "type": "PLA",
-    "color": "Czarny",
+    "quantity": 0,
     "tags": {
       "material": ["PLA"],
       "type": ["Basic"],
@@ -183,7 +183,7 @@
     "id": "5",
     "name": "PLA Czerwony Plexiwire",
     "type": "PLA",
-    "color": "Czerwony",
+    "quantity": 0,
     "tags": {
       "material": ["PLA"],
       "type": ["Basic"],
@@ -228,7 +228,7 @@
     "id": "6",
     "name": "PLA Zielony Plexiwire",
     "type": "PLA",
-    "color": "Zielony",
+    "quantity": 0,
     "tags": {
       "material": ["PLA"],
       "type": ["Basic"],
@@ -241,7 +241,7 @@
         "layer height": "0.2mm",
         "temperature": "190°C",
         "bed": "60°C",
-        "glue": "not required"
+        "glue": "required"
       },
       "Printing Speeds": {
         "inner wall": "50mm/s",
@@ -273,7 +273,7 @@
     "id": "7",
     "name": "PLA Błekitny Plexiwire",
     "type": "PLA",
-    "color": "Błekitny",
+    "quantity": 0,
     "tags": {
       "material": ["PLA"],
       "type": ["Basic"],
@@ -318,7 +318,7 @@
     "id": "8",
     "name": "TPU 95A",
     "type": "TPU",
-    "color": "Błekitny",
+    "quantity": 0,
     "tags": {
       "material": ["TPU"],
       "type": ["95A"],
@@ -363,7 +363,7 @@
     "id": "9",
     "name": "PLA+ Lemon Yellow Sunlu",
     "type": "PLA+",
-    "color": "Cytrynowo-żółty",
+    "quantity": 0,
     "tags": {
       "material": ["PLA"],
       "type": ["+"],
