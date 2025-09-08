@@ -35,11 +35,11 @@ body.dark {
   --border: #334155;
   --accent: #60a5fa;
   --accent-hover: #3b82f6;
-  --group-material: #ba7f5d; /* Darker peach */
-  --group-type: #b5a6d2; /* Darker lavender */
-  --group-brand: #90b4b9; /* Darker cyan */
-  --group-color: #c8c09e; /* Darker beige */
-  --group-features: #aabb98; /* Darker honeydew */
+  --group-material: #744f39; /* Darker peach */
+  --group-type: #6a5e83; /* Darker lavender */
+  --group-brand: #496468; /* Darker cyan */
+  --group-color: #6d6850; /* Darker beige */
+  --group-features: #546345; /* Darker honeydew */
 }
 
 header {
@@ -103,7 +103,7 @@ header {
   padding: 0.2rem 0.5rem;
   border-radius: 0.5rem;
   font-size: 0.8rem;
-  color: #333;
+  color: var(--text);
   margin-right: 0.3rem;
   display: inline-block;
 }

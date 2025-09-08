@@ -3,7 +3,6 @@
 **Filament Explorer** to aplikacja webowa stworzona w **React**, która umożliwia szybkie wyszukiwanie i filtrowanie filamentów do druku 3D.  
 Projekt powstał jako narzędzie **do własnego użytku**, aby w jednym miejscu zebrać informacje o posiadanych filamentach i łatwo je przeszukiwać wg koloru, marki, materiału czy specjalnych właściwości.
 
-
 ## ✨ Funkcjonalności
 
 - 🔎 **Wyszukiwanie** po nazwie filamentu (dynamiczne, bez przeładowania strony).
@@ -19,7 +18,6 @@ Projekt powstał jako narzędzie **do własnego użytku**, aby w jednym miejscu 
   - **Globalny przycisk "Wyczyść wszystkie filtry"**
 - 📊 **Łączenie filtrów** – możesz wybrać np. tylko _PLA_ + _Anycubic_ + _Czerwony_ i zobaczysz wszystkie spełniające kryteria filamenty.
 - 📱 **Responsywny interfejs** – wygodny także na urządzeniach mobilnych.
-
 
 ## 🚀 Jak uruchomić projekt
 
@@ -47,7 +45,6 @@ Projekt powstał jako narzędzie **do własnego użytku**, aby w jednym miejscu 
    https://localhost:3000
    ```
 
-
 ## 📂 Struktura projektu
 
 ```
@@ -65,7 +62,6 @@ src/
 ├── App.js
 └── index.js
 ```
-
 
 ## 📑 Struktura danych (filaments.json)
 
@@ -123,7 +119,6 @@ src/
 
 👉 Dzięki temu tagi są dynamicznie zbierane i nie trzeba ich ręcznie mapować w kodzie.
 
-
 ## 🖥️ Instrukcja obsługi
 
 1. Wyszukiwanie
@@ -139,7 +134,6 @@ src/
 4. Łączenie filtrów
    - Aplikacja pokazuje tylko filamenty spełniające każdy wybrany warunek.
    - Przykład: jeśli wybierzesz PLA (Material) + Gray (Color) → zobaczysz tylko szare filamenty PLA.
-
 
 ## 🛠️ Technologie
 
@@ -157,5 +151,5 @@ src/
 - [ ] 💾 Eksport listy przefiltrowanych filamentów do CSV/PDF
 - [ ] 🔄 Synchronizacja danych z lokalnym magazynem (np. IndexedDB)
 - [ ] ☁️ Integracja z bazą w chmurze (np. Firebase, Supabase)
-- [ ] ♻️ Kopiowanie wartości przez kliknięcie myszką
+- [x] ♻️ Kopiowanie wartości przez kliknięcie myszką
 - [ ] ↔️ import/export ze slicera
