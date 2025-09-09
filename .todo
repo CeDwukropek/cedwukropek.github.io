@@ -1,0 +1,31 @@
+
+Printing Settings:
+    ☐ import filament from PrusaSlicer @critical 
+    ☐ export filament from the website @critical 
+    ☐ add printing settings comparison @medium
+    ☐ add printing settings export (CSV, PDF) @low
+    ☐ add printing settings import (CSV, PDF) @low
+
+Filaments:
+    ☐ add editing/deleting filaments @medium
+
+UI/UX:
+    ☐ improve accessibility (ARIA labels, keyboard navigation) @medium
+    ☐ printing settings order @medium
+    ☐ dark mode needs work @low
+    ☐ add confirmation modals for deletions @low
+    ☐ improve loading states (spinners, skeletons) @low
+
+Firebase:
+    ☐ add notes to Firebase @high 
+    ☐ better local caching strategy @medium
+    ☐ improve error handling @low
+
+History:
+    ☐ add History of changes @high 
+    ☐ add printing History @high
+
+Code Quality:
+    ☐ improve code comments and documentation @medium
+    ☐ optimize performance (lazy loading, memoization) @low
+    ☐ create components for repeated UI patterns @low

@@ -23,4 +23,3 @@ node_modules
 # Firebase
 config.json
 key.json
-import.js
