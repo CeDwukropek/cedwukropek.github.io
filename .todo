@@ -10,6 +10,7 @@ Filaments:
     ☐ add editing/deleting filaments @medium
 
 UI/UX:
+    ☐ auto-update quantity after printing @critical 
     ☐ improve accessibility (ARIA labels, keyboard navigation) @medium
     ☐ printing settings order @medium
     ☐ dark mode needs work @low
