@@ -1,20 +1,26 @@
 import React, { useEffect, useState } from "react";
 import FilamentCard from "../components/FilamentCard";
 import SearchBar from "../components/SearchBar";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../config/firebase";
 
 function Home() {
   const [filaments, setFilaments] = useState([]);
   const [search, setSearch] = useState("");
-  // selectedTags: Array of objects like { group: "Color", tag: "Red" }
   const [selectedTags, setSelectedTags] = useState([]);
 
   useEffect(() => {
-    fetch("/filaments.json")
-      .then((res) => res.json())
-      .then((data) => setFilaments(data));
+    async function fetchData() {
+      const querySnapshot = await getDocs(collection(db, "filaments"));
+      const data = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setFilaments(data);
+    }
+    fetchData();
   }, []);
 
-  // Group selectedTags by group.
   const selectedByGroup = selectedTags.reduce((acc, { group, tag }) => {
     if (!acc[group]) acc[group] = [];
     acc[group].push(tag);
@@ -22,18 +28,23 @@ function Home() {
   }, {});
 
   const filtered = filaments.filter((filament) => {
-    const matchSearch = filament.name.toLowerCase().includes(search.toLowerCase());
-    // For each group filter, filament must have at least one of the tags in that group.
-    const matchTags = Object.entries(selectedByGroup).every(([group, filterTags]) => {
-      if (!filament.tags || !filament.tags[group]) return false;
-      return filterTags.some((tag) => filament.tags[group].includes(tag));
-    });
+    const matchSearch = filament.name
+      .toLowerCase()
+      .includes(search.toLowerCase());
 
-    // Only apply tag filtering if some tags are selected.
-    return matchSearch && (Object.keys(selectedByGroup).length > 0 ? matchTags : true);
+    const matchTags = Object.entries(selectedByGroup).every(
+      ([group, filterTags]) => {
+        if (!filament.tags || !filament.tags[group]) return false;
+        return filterTags.some((tag) => filament.tags[group].includes(tag));
+      }
+    );
+
+    return (
+      matchSearch &&
+      (Object.keys(selectedByGroup).length > 0 ? matchTags : true)
+    );
   });
 
-  // Build groupedTags for the SearchBar component.
   const groupedTags = filaments.reduce((acc, filament) => {
     Object.entries(filament.tags || {}).forEach(([group, tags]) => {
       if (!acc[group]) acc[group] = new Set();
