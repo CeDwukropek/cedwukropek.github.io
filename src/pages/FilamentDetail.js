@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import "./FilamentDetails.css"; // <- dodaj import
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../config/firebase";
+import "./FilamentDetails.css";
 
 function FilamentDetail() {
   const { id } = useParams();
@@ -10,21 +12,25 @@ function FilamentDetail() {
   const [openSections, setOpenSections] = useState({});
 
   useEffect(() => {
-    fetch("/filaments.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const f = data.find((item) => item.id === id);
+    async function fetchFilament() {
+      const docRef = doc(db, "filaments", id);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const f = { id: docSnap.id, ...docSnap.data() };
         setFilament(f);
         setNote(localStorage.getItem(`note-${id}`) || "");
 
-        if (f?.settings) {
+        if (f.settings) {
           const allOpen = Object.keys(f.settings).reduce((acc, section) => {
             acc[section] = true;
             return acc;
           }, {});
           setOpenSections(allOpen);
         }
-      });
+      }
+    }
+    fetchFilament();
   }, [id]);
 
   const saveNote = () => {
@@ -64,8 +70,6 @@ function FilamentDetail() {
     });
   }
 
-  console.log("sortedTags :>> ", sortedTags);
-
   return (
     <div className="detail-container">
       <Link to="/" className="back-link">
@@ -84,7 +88,7 @@ function FilamentDetail() {
 
       <div className="info-grid">
         <p>
-          <b>Typ:</b> {sortedTags[0].tag} {sortedTags[1].tag}
+          <b>Typ:</b> {sortedTags[0]?.tag} {sortedTags[1]?.tag}
         </p>
         <p>
           <b>Dostępność:</b>{" "}
@@ -106,13 +110,13 @@ function FilamentDetail() {
         </p>
         <p>
           <b>Kolor: </b>
-          {sortedTags[3].tag}
+          {sortedTags[3]?.tag}
         </p>
       </div>
 
       <h3 className="section-title">Ustawienia druku:</h3>
       <div className="settings-grid">
-        {Object.entries(filament.settings).map(([section, settings]) => (
+        {Object.entries(filament.settings || {}).map(([section, settings]) => (
           <div key={section} className="settings-card">
             <h4
               className="collapsible-header"
