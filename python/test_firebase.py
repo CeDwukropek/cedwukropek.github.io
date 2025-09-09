@@ -13,7 +13,6 @@ try:
     print(os.path.dirname(__file__))
 
     # --- LOGIKA SKRYPTU ---
-
     def read_filament_data_from_gcode(gcode_filepath):
         """
         Reads a g-code file and extracts filament usage in grams and millimeters.
@@ -25,12 +24,10 @@ try:
             with open(gcode_filepath, 'r', encoding='utf-8') as f:
                 for line in f:
                     if line.startswith('; total filament used [g]'):
-                        print(line)
                         match = re.search(r'=\s*([\d.]+)', line)
                         if match:
                             filament_g = float(match.group(1))
                     elif line.startswith('; filament_settings_id = '):
-                        print(line)
                         match = re.search(r'=\s*(.+)', line)
                         if match:
                             filament_type = match.group(1).strip().strip('"')
@@ -55,9 +52,6 @@ try:
 
         # Set specific data to a document with a known ID
         doc_ref = db.collection('filaments').document(filament_type)
-        print(filament_type)
-        print(doc_ref.get().to_dict())
-        sleep(200)
         # calculate new quantity using data from gcode
         new_quantity = round(doc_ref.get().to_dict()['quantity'] - filament_g, 2)
         # update document in Firestore
@@ -84,6 +78,7 @@ try:
 
         if g is not None and t is not None:
             send_to_firebase(g, t)
+            print("Zakończono.")
         else:
             print("Nie udało się uzyskać danych o zużyciu filamentu, nie wysyłam do Firebase.")
 except Exception as e:
