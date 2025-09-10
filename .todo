@@ -10,12 +10,13 @@ Filaments:
     ☐ add editing/deleting filaments @medium
 
 UI/UX:
-    ☐ auto-update quantity after printing @critical 
+    ✔ auto-update quantity after printing @critical @done (9/10/2025, 6:07:36 PM)
     ☐ improve accessibility (ARIA labels, keyboard navigation) @medium
     ☐ printing settings order @medium
-    ☐ dark mode needs work @low
+    ✔ dark mode needs work @low @done (9/10/2025, 5:48:57 PM)
     ☐ add confirmation modals for deletions @low
     ☐ improve loading states (spinners, skeletons) @low
+    ☐ cool quantity animation @low
 
 Firebase:
     ☐ add notes to Firebase @high
@@ -24,7 +25,7 @@ Firebase:
 
 History:
     ☐ add History of changes @high
-    ☐ add printing History @high
+    ☐ add printing History @low
 
 Code Quality:
     ☐ two confige files is dumb @high
