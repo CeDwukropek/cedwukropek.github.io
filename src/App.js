@@ -19,7 +19,7 @@ function App() {
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/filament/:id" element={<FilamentDetail />} />
+        <Route path="/filaments/:id" element={<FilamentDetail />} />
       </Routes>
     </div>
   );
