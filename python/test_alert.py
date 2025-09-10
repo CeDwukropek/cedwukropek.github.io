@@ -1,3 +1,7 @@
+# This is a test script to read filament usage from a g-code file.
+# Made to make sure the g-code parsing logic works before integrating it into the main firebase.py script.
+# If your "firebase.py" script is not workimg, you can use this script to test the g-code parsing logic.
+
 import sys
 import re
 import tkinter as tk
@@ -13,10 +17,12 @@ def get_filament_usage(gcode_path):
     try:
         with open(gcode_path, 'r', encoding='utf-8') as f:
             for line in f:
+                # Find the line with filament usage
                 if line.startswith('; total filament used [g]'):
                     match = re.search(r'=\s*([\d.]+)', line)
                     if match:
                         filament_g = float(match.group(1))
+                # Find the line with filament profile settings ID
                 elif line.startswith('; default_filament_profile = '):
                     print(line)
                     match = re.search(r'=\s*(.+)', line)
@@ -31,7 +37,7 @@ def get_filament_usage(gcode_path):
 
     return filament_g, filament_type
 
-# Główna część skryptu
+# Main program
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         gcode_file_path = sys.argv[1]

@@ -1,7 +1,7 @@
 
 Printing Settings:
-    ☐ import filament from PrusaSlicer @critical 
-    ☐ export filament from the website @critical 
+    ☐ import filament from PrusaSlicer @critical
+    ☐ export filament from the website @critical
     ☐ add printing settings comparison @medium
     ☐ add printing settings export (CSV, PDF) @low
     ☐ add printing settings import (CSV, PDF) @low
@@ -18,15 +18,17 @@ UI/UX:
     ☐ improve loading states (spinners, skeletons) @low
 
 Firebase:
-    ☐ add notes to Firebase @high 
+    ☐ add notes to Firebase @high
     ☐ better local caching strategy @medium
     ☐ improve error handling @low
 
 History:
-    ☐ add History of changes @high 
+    ☐ add History of changes @high
     ☐ add printing History @high
 
 Code Quality:
+    ☐ two confige files is dumb @high
+    ☐ create css file for each component @medium
     ☐ improve code comments and documentation @medium
     ☐ optimize performance (lazy loading, memoization) @low
     ☐ create components for repeated UI patterns @low

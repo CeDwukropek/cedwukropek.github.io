@@ -1,6 +1,8 @@
-# Paste a path to your Python interpreter to PrusaSlicer filament settings in "Post-processing scripts" and a path to this script.
-# PrusaSlicer will call this script after slicing a model and pass the path to the generated G-code file as the first argument.
+
+# ❗ Make sure u have python installed. You can find the path to python.exe by running "where python" in cmd.
+# ❗ Paste a path to your Python interpreter to PrusaSlicer filament settings in "Post-processing scripts" and a path to this script.
 # e.g. "C:\Path\To\python.exe" "C:\Path\To\firebase.py"
+# PrusaSlicer will call this script after slicing a model and pass the path to the generated G-code file as the first argument.
 # Make sure you have firebase-admin installed: pip install firebase-admin
 # No extra setup.
 
@@ -18,7 +20,7 @@ try:
     # Remember to have two similar "config.json" files:
     # 1. One in the same directory as this script for this script to read.
     # 2. One in the "public/config" directory of your web project to allow the web app to read it.
-    # TODO: change this weird issue, no need to have two files lol.
+    # TODO change this weird issue, no need to have two files lol.
     FIREBASE_API_KEY = os.path.join(os.path.dirname(__file__), "config.json")
     print(os.path.dirname(__file__))
 
