@@ -148,6 +148,7 @@
   font-size: 0.75rem;
   color: var(--text);
   white-space: nowrap;
+  z-index: 999;
 }
 
 .buy-link-container {

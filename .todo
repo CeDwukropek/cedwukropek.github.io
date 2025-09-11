@@ -10,7 +10,7 @@ Filaments:
     ☐ add editing/deleting filaments @medium
 
 UI/UX:
-    ☐ fix random categories order @critical
+    ✔ fix random categories order @critical @done (9/11/2025, 3:22:32 PM)
     ☐ fix random filament settings order @critical
     ✔ auto-update quantity after printing @critical @done (9/10/2025, 6:07:36 PM)
     ☐ improve accessibility (ARIA labels, keyboard navigation) @medium
