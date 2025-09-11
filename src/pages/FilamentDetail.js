@@ -1,49 +1,16 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../config/firebase";
 import "./FilamentDetails.css";
+import { useFilament } from "../hooks/useFilaments";
 
 function FilamentDetail() {
   // The filament ID, passed by the router
   const { id } = useParams();
-  // Filament data from Firestore
-  const [filament, setFilament] = useState(null);
-  // User note for this filament, stored in localStorage
-  const [note, setNote] = useState("");
   // Key of the last copied setting, to show "Copied!" tooltip
   const [copied, setCopied] = useState(null);
-  // Which settings sections are open
-  const [openSections, setOpenSections] = useState({});
-
-  // Fetch filament data from Firestore
-  useEffect(() => {
-    async function fetchFilament() {
-      // Reference to the document in Firestore
-      const docRef = doc(db, "filaments", id);
-      // Fetch the document snapshot
-      const docSnap = await getDoc(docRef);
-
-      if (docSnap.exists()) {
-        // Combine the document ID with it's data
-        // We need the ID for editing/deleting later (WE EDIT/DELETE IT LATER?)
-        const f = { id: docSnap.id, ...docSnap.data() };
-        setFilament(f);
-        // Load user's note from LocalStorage
-        setNote(localStorage.getItem(`note-${id}`) || "");
-
-        if (f.settings) {
-          // By default, open all settings sections
-          const allOpen = Object.keys(f.settings).reduce((acc, section) => {
-            acc[section] = true;
-            return acc;
-          }, {});
-          setOpenSections(allOpen);
-        }
-      }
-    }
-    fetchFilament();
-  }, [id]);
+  // Get filament data and user note from the hook
+  const { filament, note, setNote, openSections, setOpenSections } =
+    useFilament(id);
 
   const saveNote = () => {
     localStorage.setItem(`note-${id}`, note);
