@@ -23,30 +23,24 @@ export function useFilaments() {
 
 // Hook do pojedynczego dokumentu
 export function useFilament(id) {
-  // Filament data from Firestore
   const [filament, setFilament] = useState(null);
-  // User note for this filament, stored in localStorage
   const [note, setNote] = useState("");
-  // Which settings sections are open
   const [openSections, setOpenSections] = useState({});
-  if (!id) return;
 
-  // Referencja do dokumentu
-  const docRef = doc(db, "filaments", id);
+  useEffect(() => {
+    if (!id) return; // bezpieczny guard wewnątrz efektu
 
-  // Subskrypcja zamiast getDoc
-  const unsubscribe = onSnapshot(
-    docRef,
-    (docSnap) => {
+    const docRef = doc(db, "filaments", id);
+
+    const unsubscribe = onSnapshot(docRef, (docSnap) => {
       if (docSnap.exists()) {
         const f = { id: docSnap.id, ...docSnap.data() };
         setFilament(f);
 
-        // Załaduj notatkę z LocalStorage
+        // Ładowanie notatki z localStorage
         setNote(localStorage.getItem(`note-${id}`) || "");
 
         if (f.settings) {
-          // Otwórz wszystkie sekcje domyślnie
           const allOpen = Object.keys(f.settings).reduce((acc, section) => {
             acc[section] = true;
             return acc;
@@ -56,10 +50,11 @@ export function useFilament(id) {
       } else {
         setFilament(null);
       }
-      // cleanup – odpinamy subskrypcję przy zmianie id / unmount
-      return () => unsubscribe();
-    },
-    [id]
-  );
+    });
+
+    // cleanup przy zmianie id albo unmount
+    return () => unsubscribe();
+  }, [id]);
+
   return { filament, note, setNote, openSections, setOpenSections };
 }
