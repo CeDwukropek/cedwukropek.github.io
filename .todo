@@ -13,6 +13,7 @@ UI/UX:
     ✔ fix random categories order @critical @done (9/11/2025, 3:22:32 PM)
     ✔ fix random filament settings order @critical @done (9/11/2025, 3:48:40 PM)
     ✔ auto-update quantity after printing @critical @done (9/10/2025, 6:07:36 PM)
+    ☐ overall filaments weight @medium
     ☐ tooltip overflow fix @medium
     ☐ improve accessibility (ARIA labels, keyboard navigation) @medium
     ☐ printing settings order @medium
@@ -20,6 +21,7 @@ UI/UX:
     ☐ add confirmation modals for deletions @low
     ☐ improve loading states (spinners, skeletons) @low
     ☐ cool quantity animation @low
+    ☐ charts? (circular for filaments weight, usage, etc.) @low
 
 Firebase:
     ☐ add notes to Firebase @high
