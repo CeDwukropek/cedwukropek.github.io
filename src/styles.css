@@ -21,18 +21,11 @@ body {
   --border: #e2e8f0;
   --accent: #3b82f6;
   --accent-hover: #2563eb;
-  --group-material: #f5cdab; /* Peach Puff */
-  --group-type: #d8d8f3; /* Lavender */
-  --group-brand: #bcf1f1; /* Light Cyan */
-  --group-color: #f3eec5; /* Beige */
-  --group-features: #b6e6b6; /* Honeydew */
-  --quantity-superior: #0090b4;
-  --quantity-high: #00a03b;
-  --quantity-medium: #997b02;
-  --quantity-low: #c00d0d;
-  --quantity-extremlyLow: #b90081;
-  --setting-value-bg: #e7edf7;
-  --setting-value-bg-hover: #b9c4d6;
+  --group-material: #ffdab9; /* Peach Puff */
+  --group-type: #e6e6fa; /* Lavender */
+  --group-brand: #e0ffff; /* Light Cyan */
+  --group-color: #f5f5dc; /* Beige */
+  --group-features: #f0fff0; /* Honeydew */
 }
 
 body.dark {
@@ -47,13 +40,6 @@ body.dark {
   --group-brand: #496468; /* Darker cyan */
   --group-color: #6d6850; /* Darker beige */
   --group-features: #546345; /* Darker honeydew */
-  --quantity-superior: #96eaff;
-  --quantity-high: #4ade80;
-  --quantity-medium: #facc15;
-  --quantity-low: #f87171;
-  --quantity-extremlyLow: #f73898;
-  --setting-value-bg: #374151;
-  --setting-value-bg-hover: #4b5563;
 }
 
 header {
