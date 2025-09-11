@@ -1,15 +1,25 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FilamentCard from "../components/FilamentCard";
 import SearchBar from "../components/SearchBar";
-import { useFilaments } from "../hooks/useFilaments";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../config/firebase";
 
 function Home() {
-  // Get filament data from the hook
-  const { filaments } = useFilaments();
-  // Search query
+  const [filaments, setFilaments] = useState([]);
   const [search, setSearch] = useState("");
-  // Selected tags for filtering
   const [selectedTags, setSelectedTags] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const querySnapshot = await getDocs(collection(db, "filaments"));
+      const data = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setFilaments(data);
+    }
+    fetchData();
+  }, []);
 
   const selectedByGroup = selectedTags.reduce((acc, { group, tag }) => {
     if (!acc[group]) acc[group] = [];

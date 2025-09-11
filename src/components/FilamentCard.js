@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 function FilamentCard({ filament }) {
   const temperature =
     filament.settings?.["Printer Settings"]?.temperature || "";
-  const bedTemperature = filament.settings?.["Printer Settings"]?.bed || "";
+  const bedTemperature =
+    filament.settings?.["Printer Settings"]?.bed || "";
 
   // Define the desired order for groups.
   const groupOrder = ["material", "type", "brand", "color", "features"];
@@ -23,7 +25,9 @@ function FilamentCard({ filament }) {
     // Then, add any remaining groups not defined in groupOrder.
     Object.entries(filament.tags).forEach(([group, tags]) => {
       if (!groupOrder.includes(group)) {
-        sortedTags = sortedTags.concat(tags.map((tag) => ({ group, tag })));
+        sortedTags = sortedTags.concat(
+          tags.map((tag) => ({ group, tag }))
+        );
       }
     });
   }
