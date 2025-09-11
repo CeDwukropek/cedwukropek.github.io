@@ -13,6 +13,7 @@ UI/UX:
     ✔ fix random categories order @critical @done (9/11/2025, 3:22:32 PM)
     ✔ fix random filament settings order @critical @done (9/11/2025, 3:48:40 PM)
     ✔ auto-update quantity after printing @critical @done (9/10/2025, 6:07:36 PM)
+    ☐ tooltip overflow fix @medium
     ☐ improve accessibility (ARIA labels, keyboard navigation) @medium
     ☐ printing settings order @medium
     ✔ dark mode needs work @low @done (9/10/2025, 5:48:57 PM)
