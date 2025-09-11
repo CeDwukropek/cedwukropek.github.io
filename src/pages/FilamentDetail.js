@@ -4,11 +4,8 @@ import "./FilamentDetails.css";
 import { useFilament } from "../hooks/useFilaments";
 
 function FilamentDetail() {
-  // The filament ID, passed by the router
   const { id } = useParams();
-  // Key of the last copied setting, to show "Copied!" tooltip
   const [copied, setCopied] = useState(null);
-  // Get filament data and user note from the hook
   const { filament, note, setNote, openSections, setOpenSections } =
     useFilament(id);
 
@@ -32,20 +29,47 @@ function FilamentDetail() {
 
   if (!filament) return <p>Ładowanie...</p>;
 
-  // Sort tags by predefined group order, then alphabetically within each group
+  // Kolejność wyświetlania ustawień (reszta w oryginalnej kolejności)
+  const SETTINGS_ORDER = [
+    "Filament Details",
+    "Printer Settings",
+    "Printing Speeds",
+    "Retraction",
+    "Ironing",
+  ];
+
+  // Przygotuj sekcje ustawień w odpowiedniej kolejności
+  const orderedSettings = [];
+  const seen = new Set();
+
+  if (filament.settings) {
+    // najpierw te zdefiniowane w SETTINGS_ORDER
+    SETTINGS_ORDER.forEach((section) => {
+      if (filament.settings[section]) {
+        orderedSettings.push([section, filament.settings[section]]);
+        seen.add(section);
+      }
+    });
+
+    // potem wszystkie pozostałe w oryginalnej kolejności
+    Object.entries(filament.settings).forEach(([section, settings]) => {
+      if (!seen.has(section)) {
+        orderedSettings.push([section, settings]);
+      }
+    });
+  }
+
+  // Kolejność tagów (zachowujemy Twój system)
   const groupOrder = ["material", "type", "brand", "color", "features"];
   let sortedTags = [];
   if (filament.tags) {
-    // First, add tags in the predefined group order
     groupOrder.forEach((group) => {
       if (filament.tags[group]) {
-        // Add tags from each group
         sortedTags = sortedTags.concat(
           filament.tags[group].map((tag) => ({ group, tag }))
         );
       }
     });
-    // Then add any remaining tags that are in groups not in the predefined order
     Object.entries(filament.tags).forEach(([group, tags]) => {
       if (!groupOrder.includes(group)) {
         sortedTags = sortedTags.concat(tags.map((tag) => ({ group, tag })));
@@ -99,7 +123,7 @@ function FilamentDetail() {
 
       <h3 className="section-title">Ustawienia druku:</h3>
       <div className="settings-grid">
-        {Object.entries(filament.settings || {}).map(([section, settings]) => (
+        {orderedSettings.map(([section, settings]) => (
           <div key={section} className="settings-card">
             <h4
               className="collapsible-header"

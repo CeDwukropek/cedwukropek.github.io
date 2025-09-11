@@ -1,45 +1,63 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
-function SearchBar({ search, setSearch, selectedTags, setSelectedTags, groupedTags }) {
+function SearchBar({
+  search,
+  setSearch,
+  selectedTags,
+  setSelectedTags,
+  groupedTags,
+}) {
   const [openGroup, setOpenGroup] = useState(null);
   const containerRef = useRef(null);
-  // Wyczyść wszystkie filtry
+
+  // constant group order
+  const GROUP_ORDER = ["material", "brand", "type", "color", "features"];
+
+  // clear all filters
   const clearAll = () => {
     setSelectedTags([]);
   };
 
+  // toggle dropdown group
   const toggleGroup = (groupName) => {
     setOpenGroup(openGroup === groupName ? null : groupName);
   };
 
-  // Toggle dla grupy (jeśli coś zaznaczone -> usuń, jeśli nic -> włącz wszystkie)
+  // toggle select/deselect all in group
   const toggleGroupSelection = (groupName, groupTags) => {
     const selectedInGroup = selectedTags.filter((t) => t.group === groupName);
     if (selectedInGroup.length > 0) {
-      // coś zaznaczone → czyścimy grupę
       setSelectedTags(selectedTags.filter((t) => t.group !== groupName));
     } else {
-      // nic zaznaczone → zaznaczamy wszystkie
-      const newSelections = [...groupTags].map((tag) => ({ group: groupName, tag }));
+      const newSelections = [...groupTags].map((tag) => ({
+        group: groupName,
+        tag,
+      }));
       setSelectedTags([...selectedTags, ...newSelections]);
     }
   };
+
+  // toggle individual tag
   const handleTagToggle = (groupName, tag) => {
-    // Check if the tag from this group is already selected.
     const exists = selectedTags.some(
       (t) => t.group === groupName && t.tag === tag
     );
     if (exists) {
-      setSelectedTags(selectedTags.filter((t) => !(t.group === groupName && t.tag === tag)));
+      setSelectedTags(
+        selectedTags.filter((t) => !(t.group === groupName && t.tag === tag))
+      );
     } else {
       setSelectedTags([...selectedTags, { group: groupName, tag }]);
     }
   };
 
-  // Zamknij dropdown po kliknięciu poza nim
+  // close dropdown if clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (containerRef.current && !containerRef.current.contains(event.target)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target)
+      ) {
         setOpenGroup(null);
       }
     };
@@ -49,11 +67,17 @@ function SearchBar({ search, setSearch, selectedTags, setSelectedTags, groupedTa
     };
   }, []);
 
-  // Render dropdowna dla każdej grupy
+  // render a single tag group dropdown
   const renderTagGroup = (groupName, groupTags) => {
     if (!groupTags || groupTags.size === 0) return null;
-    // Calculate how many filters are selected in the current group.
+
     const count = selectedTags.filter((t) => t.group === groupName).length;
+
+    // sorting tags alphabetically within the group
+    const sortedTags = [...groupTags].sort((a, b) =>
+      a.localeCompare(b, "pl", { sensitivity: "base" })
+    );
+
     return (
       <div key={groupName} className="dropdown-group">
         <button
@@ -61,20 +85,18 @@ function SearchBar({ search, setSearch, selectedTags, setSelectedTags, groupedTa
           onClick={() => toggleGroup(groupName)}
         >
           {groupName}
-          {count > 0 && (
-            <span className="selected-count">
-              {count}
-            </span>
-          )}
+          {count > 0 && <span className="selected-count">{count}</span>}
         </button>
 
         {openGroup === groupName && (
           <div className="dropdown-content">
-            {[...groupTags].map((tag) => (
+            {sortedTags.map((tag) => (
               <label key={tag} className="dropdown-item">
                 <input
                   type="checkbox"
-                  checked={selectedTags.some((t) => t.group === groupName && t.tag === tag)}
+                  checked={selectedTags.some(
+                    (t) => t.group === groupName && t.tag === tag
+                  )}
                   onChange={() => handleTagToggle(groupName, tag)}
                 />
                 {tag}
@@ -83,7 +105,7 @@ function SearchBar({ search, setSearch, selectedTags, setSelectedTags, groupedTa
             <button
               className="toggle-group-btn"
               onClick={(e) => {
-                e.stopPropagation(); // nie zamykaj dropdownu
+                e.stopPropagation();
                 toggleGroupSelection(groupName, groupTags);
               }}
             >
@@ -94,6 +116,20 @@ function SearchBar({ search, setSearch, selectedTags, setSelectedTags, groupedTa
       </div>
     );
   };
+
+  // --- 🔑 Group Order logic ---
+  const orderedGroups = [
+    // 1. first the defined groups in constant order
+    ...GROUP_ORDER.filter((g) => groupedTags[g]).map((g) => [
+      g,
+      groupedTags[g],
+    ]),
+
+    // 2. rest of the groups, sorded alphabetically
+    ...Object.entries(groupedTags)
+      .filter(([g]) => !GROUP_ORDER.includes(g))
+      .sort(([a], [b]) => a.localeCompare(b, "pl", { sensitivity: "base" })),
+  ];
 
   return (
     <div ref={containerRef} className="search-container">
@@ -106,7 +142,7 @@ function SearchBar({ search, setSearch, selectedTags, setSelectedTags, groupedTa
         />
       </div>
       <div className="dropdown-filter">
-        {Object.entries(groupedTags).map(([groupName, groupTags]) =>
+        {orderedGroups.map(([groupName, groupTags]) =>
           renderTagGroup(groupName, groupTags)
         )}
         <div className="filters-header">
