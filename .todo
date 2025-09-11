@@ -6,13 +6,11 @@ Printing Settings:
     ☐ add printing settings export (CSV, PDF) @low
     ☐ add printing settings import (CSV, PDF) @low
 
-Filaments:
-    ☐ add editing/deleting filaments @medium
-
 UI/UX:
     ✔ fix random categories order @critical @done (9/11/2025, 3:22:32 PM)
     ✔ fix random filament settings order @critical @done (9/11/2025, 3:48:40 PM)
     ✔ auto-update quantity after printing @critical @done (9/10/2025, 6:07:36 PM)
+    ☐ add editing/deleting filaments @medium
     ☐ overall filaments weight @medium
     ☐ tooltip overflow fix @medium
     ☐ improve accessibility (ARIA labels, keyboard navigation) @medium
