@@ -1,5 +1,5 @@
 
-Printing Settings:
+Prusa Integration:
     ☐ import filament from PrusaSlicer @critical
     ☐ export filament from the website @critical
     ☐ add printing settings comparison @medium
