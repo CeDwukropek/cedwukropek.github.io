@@ -1,7 +1,7 @@
 
 Prusa Integration:
-    ☐ import filament from PrusaSlicer @critical
-    ☐ export filament from the website @critical
+    ☐ import printing settings from PrusaSlicer @critical
+    ☐ export printing settings from the website @critical
     ☐ add printing settings comparison @medium
     ☐ add printing settings export (CSV, PDF) @low
     ☐ add printing settings import (CSV, PDF) @low
