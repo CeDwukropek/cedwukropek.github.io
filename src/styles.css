@@ -525,6 +525,11 @@ body.dark .dark-mode-toggle {
   color: #007bff;
 }
 
+.charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+}
+
 @keyframes fadeOut {
   0% {
     opacity: 1;
