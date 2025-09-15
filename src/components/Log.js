@@ -1,14 +1,16 @@
 import { formatRelativeDate } from "../utils/date";
+import "./Logs.css";
 
 function Log({ id, quantity, time, filaments }) {
   const filament = filaments.find((f) => f.id === id);
   const name = filament ? filament.name : `id: ${id}`;
-
   const formattedTime = formatRelativeDate(time);
 
   return (
     <div className="log">
-      <h5 className={quantity < 0 ? "minus" : "plus"}>{quantity}g</h5>
+      <small className={quantity < 0 ? "minus bold" : "plus bold"}>
+        {quantity}g
+      </small>
       <small>{name}</small>
       <small className="date">{formattedTime}</small>
     </div>

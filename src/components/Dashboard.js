@@ -2,6 +2,7 @@ import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from "chart.js";
 import { useState } from "react";
 import "./charts.css";
+import { stringToColor } from "../utils/stringToColor.js";
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
@@ -24,17 +25,19 @@ function Dashboard({ filaments }) {
     return acc;
   }, {});
 
-  const labels = Object.keys(grouped);
-  const dataValues = Object.values(grouped);
+  const groupedArray = Object.entries(grouped).map(([label, value]) => {
+    return {
+      label,
+      value,
+      color: stringToColor(label),
+    };
+  });
 
-  const colors = [
-    "#FF6384", // róż
-    "#36A2EB", // niebieski
-    "#FFCE56", // żółty
-    "#4BC0C0", // turkus
-    "#9966FF", // fiolet
-    "#FF9F40", // pomarańcz
-  ];
+  console.log("groupedArray :>> ", groupedArray);
+
+  const labels = groupedArray.map((g) => g.label);
+  const dataValues = groupedArray.map((g) => g.value);
+  const colors = groupedArray.map((g) => g.color);
 
   const data = {
     labels,
@@ -42,8 +45,8 @@ function Dashboard({ filaments }) {
       {
         label: "Waga (g)",
         data: dataValues,
-        borderColor: labels.map((_, i) => colors[i % colors.length]),
-        backgroundColor: labels.map((_, i) => colors[i % colors.length] + "55"),
+        borderColor: colors,
+        backgroundColor: colors.map((c) => c + "55"),
       },
     ],
   };
