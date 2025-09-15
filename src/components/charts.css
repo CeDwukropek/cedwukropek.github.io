@@ -1,0 +1,7 @@
+.select {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border);
+  background-color: var(--card-bg);
+  color: var(--text);
+  border-radius: 4px;
+}

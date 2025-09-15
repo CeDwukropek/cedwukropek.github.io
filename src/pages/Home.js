@@ -1,14 +1,17 @@
 import { useState } from "react";
 import FilamentCard from "../components/FilamentCard";
 import SearchBar from "../components/SearchBar";
+import Dashboard from "../components/Dashboard"; // ⬅️ nowy import
 import { useFilaments } from "../hooks/useFilaments";
+import { useLogs } from "../hooks/useLogs";
+import Logs from "../components/Logs";
+import UsageChart from "../components/UsageChart";
 
 function Home() {
-  // Get filament data from the hook
   const { filaments } = useFilaments();
-  // Search query
+  // Get logs data from the hook
+  const { logs } = useLogs();
   const [search, setSearch] = useState("");
-  // Selected tags for filtering
   const [selectedTags, setSelectedTags] = useState([]);
 
   const selectedByGroup = selectedTags.reduce((acc, { group, tag }) => {
@@ -52,10 +55,17 @@ function Home() {
         setSelectedTags={setSelectedTags}
         groupedTags={groupedTags}
       />
-      <div className="grid">
-        {filtered.map((f) => (
-          <FilamentCard key={f.id} filament={f} />
-        ))}
+      <div className="charts">
+        <Dashboard filaments={filaments} />
+        <UsageChart logs={logs} filaments={filaments} />
+      </div>
+      <div className="container inline">
+        <div className="grid">
+          {filtered.map((f) => (
+            <FilamentCard key={f.id} filament={f} />
+          ))}
+        </div>
+        <Logs data={logs} filaments={filaments} />
       </div>
     </div>
   );
