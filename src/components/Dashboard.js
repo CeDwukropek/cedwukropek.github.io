@@ -1,6 +1,7 @@
 import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from "chart.js";
 import { useState } from "react";
+import "./charts.css";
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
@@ -19,11 +20,21 @@ function Dashboard({ filaments }) {
     else key = "Inne";
 
     acc[key] = (acc[key] || 0) + f.quantity;
+
     return acc;
   }, {});
 
   const labels = Object.keys(grouped);
   const dataValues = Object.values(grouped);
+
+  const colors = [
+    "#FF6384", // róż
+    "#36A2EB", // niebieski
+    "#FFCE56", // żółty
+    "#4BC0C0", // turkus
+    "#9966FF", // fiolet
+    "#FF9F40", // pomarańcz
+  ];
 
   const data = {
     labels,
@@ -31,16 +42,8 @@ function Dashboard({ filaments }) {
       {
         label: "Waga (g)",
         data: dataValues,
-        backgroundColor: [
-          "#3b82f6",
-          "#ef4444",
-          "#10b981",
-          "#f59e0b",
-          "#8b5cf6",
-          "#ec4899",
-          "#14b8a6",
-          "#f97316",
-        ],
+        borderColor: labels.map((_, i) => colors[i % colors.length]),
+        backgroundColor: labels.map((_, i) => colors[i % colors.length] + "55"),
       },
     ],
   };
@@ -77,14 +80,11 @@ function Dashboard({ filaments }) {
   return (
     <div
       style={{
-        width: "100%",
-        maxWidth: "900px",
         margin: "0 auto 2rem auto",
-        display: "flex",
-        flexDirection: "column",
       }}
     >
       <select
+        className="select"
         value={groupBy}
         onChange={(e) => setGroupBy(e.target.value)}
         style={{

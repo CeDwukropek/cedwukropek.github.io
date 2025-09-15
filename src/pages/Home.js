@@ -57,7 +57,7 @@ function Home() {
       />
       <div className="charts">
         <Dashboard filaments={filaments} />
-        <UsageChart logs={logs} />
+        <UsageChart logs={logs} filaments={filaments} />
       </div>
       <div className="container inline">
         <div className="grid">

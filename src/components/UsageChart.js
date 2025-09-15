@@ -1,4 +1,8 @@
 import { Line } from "react-chartjs-2";
+import { getMonthlyUsageBy } from "../utils/stats";
+import { useState } from "react";
+import "./charts.css";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,8 +14,7 @@ import {
   Legend,
 } from "chart.js";
 
-import { getMonthlyUsage } from "../utils/stats";
-
+// Rejestracja wszystkiego co potrzebne do LineChart
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -22,26 +25,17 @@ ChartJS.register(
   Legend
 );
 
-function UsageChart({ logs }) {
-  const { labels, values } = getMonthlyUsage(logs);
+function UsageChart({ logs, filaments }) {
+  const [groupBy, setGroupBy] = useState("global");
+  const { labels, datasets } = getMonthlyUsageBy(logs, filaments, groupBy);
 
-  const data = {
-    labels,
-    datasets: [
-      {
-        label: "Zużycie filamentu (g)",
-        data: values,
-        borderColor: "rgba(75,192,192,1)",
-        backgroundColor: "rgba(75,192,192,0.2)",
-        tension: 0.3,
-      },
-    ],
-  };
+  const data = { labels, datasets };
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
-      legend: { display: true, position: "top" },
+      legend: { position: "bottom" },
       title: { display: true, text: "Zużycie filamentu w tym miesiącu" },
     },
     scales: {
@@ -50,7 +44,22 @@ function UsageChart({ logs }) {
     },
   };
 
-  return <Line data={data} options={{ options, maintainAspectRatio: false }} />;
+  return (
+    <div style={{ height: "400px" }}>
+      <select
+        className="select"
+        value={groupBy}
+        onChange={(e) => setGroupBy(e.target.value)}
+      >
+        <option value="global">Całość</option>
+        <option value="color">Kolor</option>
+        <option value="brand">Brand</option>
+        <option value="filament">Filament</option>
+      </select>
+
+      <Line data={data} options={options} />
+    </div>
+  );
 }
 
 export default UsageChart;
