@@ -62,14 +62,21 @@ try:
 
         # Get a reference to the Firestore database
         db = firestore.client()
-
         # Set specific data to a document with a known ID
         doc_ref = db.collection('filaments').document(filament_type)
+        logs_ref = db.collection('logs')
         # calculate new quantity using data from gcode
         new_quantity = round(doc_ref.get().to_dict()['quantity'] - filament_g, 2)
+        log_data = {
+            'filamentID': filament_type,
+            'quantity': round(filament_g, 2) * (-1),
+            'time': firestore.SERVER_TIMESTAMP
+        }
         # update document in Firestore
         doc_ref.update({'quantity': new_quantity})
         print(f"Updated quantity.")
+        logs_ref.add(log_data)
+        print(f"Added log.")
 
     if __name__ == "__main__":
         # For testing, you can run the script manually and provide a path to a G-code file.

@@ -2,10 +2,14 @@ import { useState } from "react";
 import FilamentCard from "../components/FilamentCard";
 import SearchBar from "../components/SearchBar";
 import { useFilaments } from "../hooks/useFilaments";
+import { useLogs } from "../hooks/useLogs";
+import Logs from "../components/Logs";
 
 function Home() {
   // Get filament data from the hook
   const { filaments } = useFilaments();
+  // Get logs data from the hook
+  const { logs } = useLogs();
   // Search query
   const [search, setSearch] = useState("");
   // Selected tags for filtering
@@ -52,10 +56,13 @@ function Home() {
         setSelectedTags={setSelectedTags}
         groupedTags={groupedTags}
       />
-      <div className="grid">
-        {filtered.map((f) => (
-          <FilamentCard key={f.id} filament={f} />
-        ))}
+      <div className="container inline">
+        <div className="grid">
+          {filtered.map((f) => (
+            <FilamentCard key={f.id} filament={f} />
+          ))}
+        </div>
+        <Logs data={logs} filaments={filaments} />
       </div>
     </div>
   );

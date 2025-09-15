@@ -17,6 +17,7 @@ body {
 :root {
   --bg: #f8fafc;
   --text: #0f172a;
+  --text-50: #95a2c2;
   --card-bg: #ffffff;
   --border: #e2e8f0;
   --accent: #3b82f6;
@@ -38,6 +39,7 @@ body {
 body.dark {
   --bg: #0f172a;
   --text: #e2e8f0;
+  --text-50: #6f84a0;
   --card-bg: #1e293b;
   --border: #334155;
   --accent: #60a5fa;
@@ -68,6 +70,19 @@ header {
 
 .container {
   padding: 1rem;
+}
+
+.container.inline {
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) 280px;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .container.inline {
+    display: block;
+  }
 }
 
 .grid {
