@@ -35,7 +35,13 @@ function UsageChart({ logs, filaments }) {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
-      legend: { position: "bottom" },
+      legend: {
+        position: "bottom",
+        labels: {
+          usePointStyle: true,
+          boxWidth: 12,
+        },
+      },
       title: { display: true, text: "Zużycie filamentu w tym miesiącu" },
     },
     scales: {

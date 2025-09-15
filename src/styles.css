@@ -81,9 +81,10 @@ header {
 
 .charts {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
   max-height: 50vh;
   padding-bottom: 1rem;
+  gap: 1rem;
 }
 
 @media screen and (max-width: 768px) {

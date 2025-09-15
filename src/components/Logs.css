@@ -51,11 +51,10 @@
 .log {
   display: flex;
   flex-direction: column;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
 }
 
-.log h5 {
-  margin-bottom: 0.25rem;
-}
 .log .date {
   color: var(--text-50);
 }
@@ -66,4 +65,25 @@
 
 .log .plus {
   color: var(--quantity-high);
+}
+
+.bold {
+  margin-bottom: 0.25rem;
+  margin-top: 0.5rem;
+  font-weight: 900;
+}
+
+.delete-button {
+  background-color: transparent;
+  padding: 0;
+  padding-top: 0.25rem;
+  margin: 0;
+  color: var(--quantity-low);
+  width: auto;
+  text-align: left;
+}
+
+.delete-button:hover {
+  cursor: pointer;
+  background: transparent;
 }

@@ -5,3 +5,9 @@
   color: var(--text);
   border-radius: 4px;
 }
+
+.chartjs-legend ul {
+  display: flex;
+  flex-wrap: wrap; /* 👈 pozwala zawijać wiersze */
+  justify-content: center;
+}
