@@ -3,9 +3,13 @@ import FilamentCard from "../components/FilamentCard";
 import SearchBar from "../components/SearchBar";
 import Dashboard from "../components/Dashboard"; // ⬅️ nowy import
 import { useFilaments } from "../hooks/useFilaments";
+import { useLogs } from "../hooks/useLogs";
+import Logs from "../components/Logs";
 
 function Home() {
   const { filaments } = useFilaments();
+  // Get logs data from the hook
+  const { logs } = useLogs();
   const [search, setSearch] = useState("");
   const [selectedTags, setSelectedTags] = useState([]);
 
@@ -50,12 +54,9 @@ function Home() {
         setSelectedTags={setSelectedTags}
         groupedTags={groupedTags}
       />
-
-      {/* ⬅️ Dashboard nad gridem */}
       <div className="charts">
         <Dashboard filaments={filaments} />
       </div>
-
       <div className="grid">
         {filtered.map((f) => (
           <FilamentCard key={f.id} filament={f} />
