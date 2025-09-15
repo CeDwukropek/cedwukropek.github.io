@@ -57,10 +57,13 @@ function Home() {
       <div className="charts">
         <Dashboard filaments={filaments} />
       </div>
-      <div className="grid">
-        {filtered.map((f) => (
-          <FilamentCard key={f.id} filament={f} />
-        ))}
+      <div className="container inline">
+        <div className="grid">
+          {filtered.map((f) => (
+            <FilamentCard key={f.id} filament={f} />
+          ))}
+        </div>
+        <Logs data={logs} filaments={filaments} />
       </div>
     </div>
   );
