@@ -543,6 +543,8 @@ body.dark .dark-mode-toggle {
 .charts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+  max-height: 50vh;
+  padding-bottom: 1rem;
 }
 
 @keyframes fadeOut {

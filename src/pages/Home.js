@@ -5,6 +5,7 @@ import Dashboard from "../components/Dashboard"; // ⬅️ nowy import
 import { useFilaments } from "../hooks/useFilaments";
 import { useLogs } from "../hooks/useLogs";
 import Logs from "../components/Logs";
+import UsageChart from "../components/UsageChart";
 
 function Home() {
   const { filaments } = useFilaments();
@@ -56,6 +57,7 @@ function Home() {
       />
       <div className="charts">
         <Dashboard filaments={filaments} />
+        <UsageChart logs={logs} />
       </div>
       <div className="container inline">
         <div className="grid">
