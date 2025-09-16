@@ -27,7 +27,8 @@ function Logs({ data, filaments }) {
             {data.map((el) => (
               <Log
                 key={el.id}
-                id={el.filamentID}
+                logId={el.id}
+                filamentId={el.filamentID}
                 quantity={el.quantity}
                 time={el.time.seconds}
                 filaments={filaments}
@@ -46,7 +47,8 @@ function Logs({ data, filaments }) {
       {data.map((el) => (
         <Log
           key={el.id}
-          id={el.filamentID}
+          logId={el.id}
+          filamentId={el.filamentID}
           quantity={el.quantity}
           time={el.time.seconds}
           filaments={filaments}

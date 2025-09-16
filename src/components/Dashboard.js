@@ -33,8 +33,6 @@ function Dashboard({ filaments }) {
     };
   });
 
-  console.log("groupedArray :>> ", groupedArray);
-
   const labels = groupedArray.map((g) => g.label);
   const dataValues = groupedArray.map((g) => g.value);
   const colors = groupedArray.map((g) => g.color);

@@ -55,6 +55,11 @@
   border-bottom: 1px solid var(--border);
 }
 
+.log small:first-child {
+  padding-top: 0.5rem;
+  padding-bottom: 0.25rem;
+}
+
 .log .date {
   color: var(--text-50);
 }
