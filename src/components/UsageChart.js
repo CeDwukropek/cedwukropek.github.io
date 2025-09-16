@@ -29,7 +29,11 @@ ChartJS.register(
 
 function UsageChart({ logs, filaments }) {
   const [groupBy, setGroupBy] = useState("global");
-  const { labels, datasets } = getMonthlyUsageBy(logs, filaments, groupBy);
+  const { labels, datasets, totalUsage } = getMonthlyUsageBy(
+    logs,
+    filaments,
+    groupBy
+  );
 
   const data = { labels, datasets };
 
@@ -80,6 +84,16 @@ function UsageChart({ logs, filaments }) {
         <option value="brand">Brand</option>
         <option value="filament">Filament</option>
       </select>
+      <br></br>
+      <br></br>
+      <small>
+        <span style={{ color: "var(--text-50)" }}>Total:</span>{" "}
+        {Number(totalUsage).toLocaleString("pl-PL", {
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 2,
+        })}
+        g
+      </small>
 
       <Line data={data} options={options} />
     </div>

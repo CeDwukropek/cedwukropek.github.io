@@ -17,6 +17,8 @@ export function getMonthlyUsageBy(logs, filaments = [], groupBy = "global") {
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const labels = Array.from({ length: daysInMonth }, (_, i) => i + 1);
 
+  let totalUsage = 0;
+
   const grouped = {};
   monthLogs.forEach((log) => {
     const filament = filaments.find((f) => f.id === log.filamentID);
@@ -34,6 +36,8 @@ export function getMonthlyUsageBy(logs, filaments = [], groupBy = "global") {
 
     if (!grouped[groupKey]) grouped[groupKey] = {};
     grouped[groupKey][day] = (grouped[groupKey][day] || 0) + log.quantity * -1;
+
+    if (log.quantity < 0) totalUsage += log.quantity * -1;
   });
 
   const datasets = Object.entries(grouped).map(([key, data], i) => {
@@ -49,5 +53,5 @@ export function getMonthlyUsageBy(logs, filaments = [], groupBy = "global") {
     };
   });
 
-  return { labels, datasets };
+  return { labels, datasets, totalUsage };
 }
