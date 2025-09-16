@@ -9,7 +9,9 @@ ChartJS.register(ArcElement, Tooltip, Legend, Title);
 function Dashboard({ filaments }) {
   const [groupBy, setGroupBy] = useState("color");
 
-  const totalWeight = filaments.reduce((sum, f) => sum + f.quantity, 0);
+  const totalWeight = filaments
+    .reduce((sum, f) => sum + f.quantity, 0)
+    .toFixed(2);
 
   // Grupowanie dynamiczne
   const grouped = filaments.reduce((acc, f) => {
