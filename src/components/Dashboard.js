@@ -102,8 +102,14 @@ function Dashboard({ filaments }) {
       </select>
       <br></br>
       <small>
-        <span style={{ color: "var(--text-50)" }}>Total:</span> {totalWeight}g
+        <span style={{ color: "var(--text-50)" }}>Total:</span>{" "}
+        {Number(totalWeight).toLocaleString("pl-PL", {
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 2,
+        })}
+        g
       </small>
+
       <div style={{ height: "400px" }}>
         <Doughnut data={data} options={options} />
       </div>
