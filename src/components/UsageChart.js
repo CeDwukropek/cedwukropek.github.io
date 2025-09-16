@@ -81,6 +81,7 @@ function UsageChart({ logs, filaments }) {
       >
         <option value="global">Całość</option>
         <option value="color">Kolor</option>
+        <option value="material">Materiał</option>
         <option value="brand">Brand</option>
         <option value="filament">Filament</option>
       </select>

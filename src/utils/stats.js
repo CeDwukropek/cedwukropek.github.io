@@ -29,6 +29,8 @@ export function getMonthlyUsageBy(logs, filaments = [], groupBy = "global") {
         ? filament?.tags?.brand?.[0] || "Inne"
         : groupBy === "filament"
         ? filament?.name || "Inne"
+        : groupBy === "material"
+        ? filament?.tags?.material?.[0] || "Inne"
         : "global";
 
     const date = new Date(log.time.seconds * 1000);
