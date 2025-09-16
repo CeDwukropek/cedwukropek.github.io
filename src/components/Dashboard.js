@@ -58,7 +58,8 @@ function Dashboard({ filaments }) {
       legend: {
         position: "bottom",
         labels: {
-          boxWidth: 20,
+          boxWidth: 12,
+          usePointStyle: true,
           padding: 15,
           font: { size: 12 },
         },
