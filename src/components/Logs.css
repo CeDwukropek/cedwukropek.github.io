@@ -55,6 +55,11 @@
   border-bottom: 1px solid var(--border);
 }
 
+.log small:first-child {
+  padding-top: 0.5rem;
+  padding-bottom: 0.25rem;
+}
+
 .log .date {
   color: var(--text-50);
 }
@@ -73,17 +78,17 @@
   font-weight: 900;
 }
 
-.delete-button {
+.edit-button {
   background-color: transparent;
   padding: 0;
   padding-top: 0.25rem;
   margin: 0;
-  color: var(--quantity-low);
+  color: var(--quantity-superior);
   width: auto;
   text-align: left;
 }
 
-.delete-button:hover {
+.edit-button:hover {
   cursor: pointer;
   background: transparent;
 }

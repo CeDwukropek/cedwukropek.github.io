@@ -11,12 +11,11 @@ UI/UX:
     ✔ fix random filament settings order @critical @done (9/11/2025, 3:48:40 PM)
     ✔ auto-update quantity after printing @critical @done (9/10/2025, 6:07:36 PM)
     ☐ add editing/deleting filaments @medium
-    ☐ overall filaments weight @medium
+    ✔ overall filaments weight @medium @done (9/16/2025, 1:34:43 PM)
     ☐ tooltip overflow fix @medium
-    ☐ improve accessibility (ARIA labels, keyboard navigation) @medium
-    ☐ printing settings order @medium
+    ☐ improve accessibility (ARIA labels, keyboard navigation) @low
+    ✔ printing settings order @low @done (9/16/2025, 1:35:19 PM)
     ✔ dark mode needs work @low @done (9/10/2025, 5:48:57 PM)
-    ☐ add confirmation modals for deletions @low
     ☐ improve loading states (spinners, skeletons) @low
     ☐ cool quantity animation @low
     ☐ charts? (circular for filaments weight, usage, etc.) @low
@@ -27,8 +26,11 @@ Firebase:
     ☐ improve error handling @low
 
 History:
-    ✔ add History of changes @high @done (9/15/2025, 1:04:16 PM)
-    ☐ add printing History @low
+    ✔ add History of changes @high @done (9/15/2025, 4:16:06 PM)
+    ✔ add edit button @done (9/16/2025, 12:02:42 PM)
+    ☐ add delete button @high 
+    ☐ add name of printed model @medium
+    ☐ history of the log @medium
 
 Code Quality:
     ☐ two config files is dumb @high

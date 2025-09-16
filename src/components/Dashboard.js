@@ -9,7 +9,9 @@ ChartJS.register(ArcElement, Tooltip, Legend, Title);
 function Dashboard({ filaments }) {
   const [groupBy, setGroupBy] = useState("color");
 
-  const totalWeight = filaments.reduce((sum, f) => sum + f.quantity, 0);
+  const totalWeight = filaments
+    .reduce((sum, f) => sum + f.quantity, 0)
+    .toFixed(2);
 
   // Grupowanie dynamiczne
   const grouped = filaments.reduce((acc, f) => {
@@ -32,8 +34,6 @@ function Dashboard({ filaments }) {
       color: stringToColor(label),
     };
   });
-
-  console.log("groupedArray :>> ", groupedArray);
 
   const labels = groupedArray.map((g) => g.label);
   const dataValues = groupedArray.map((g) => g.value);
@@ -75,7 +75,7 @@ function Dashboard({ filaments }) {
       title: {
         display: true,
         text: `Rozkład wagowy wg ${groupBy}`,
-        font: { size: 18 },
+        font: { size: 16 },
       },
     },
   };
@@ -84,6 +84,7 @@ function Dashboard({ filaments }) {
     <div
       style={{
         margin: "0 auto 2rem auto",
+        width: "100%",
       }}
     >
       <select
@@ -99,6 +100,15 @@ function Dashboard({ filaments }) {
         <option value="material">Materiał</option>
         <option value="name">Nazwa</option>
       </select>
+      <br></br>
+      <small>
+        <span style={{ color: "var(--text-50)" }}>Total:</span>{" "}
+        {Number(totalWeight).toLocaleString("pl-PL", {
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 2,
+        })}
+        g
+      </small>
 
       <div style={{ height: "400px" }}>
         <Doughnut data={data} options={options} />

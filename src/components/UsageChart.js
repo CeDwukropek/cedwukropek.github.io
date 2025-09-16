@@ -12,6 +12,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  Filler,
 } from "chart.js";
 
 // Rejestracja wszystkiego co potrzebne do LineChart
@@ -22,7 +23,8 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  Filler
 );
 
 function UsageChart({ logs, filaments }) {
@@ -42,11 +44,27 @@ function UsageChart({ logs, filaments }) {
           boxWidth: 12,
         },
       },
-      title: { display: true, text: "Zużycie filamentu w tym miesiącu" },
+      title: {
+        display: true,
+        text: "Zużycie filamentu w tym miesiącu",
+        font: { size: 16 },
+      },
     },
     scales: {
-      x: { title: { display: true, text: "Dzień miesiąca" } },
-      y: { title: { display: true, text: "Zużycie (g)" } },
+      x: {
+        title: {
+          display: true,
+          text: "Dzień miesiąca",
+          font: { size: 12 },
+        },
+      },
+      y: {
+        title: {
+          display: true,
+          text: "Zużycie (g)",
+          font: { size: 12 },
+        },
+      },
     },
   };
 

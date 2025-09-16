@@ -1,0 +1,39 @@
+.modal-actions button {
+  padding: 0;
+  background: transparent;
+}
+
+.modal-actions button:nth-child(2) {
+  margin-left: 0.5rem;
+}
+
+.modal-actions button:hover {
+  background: transparent;
+  filter: hue-rotate(55deg);
+}
+
+.modal {
+  margin-left: 0.5rem;
+}
+
+.modal h5 {
+  margin: 0;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.modal input {
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.modal .cancel {
+  color: var(--quantity-low);
+}
+
+.modal .accept {
+  color: var(--quantity-high);
+}
