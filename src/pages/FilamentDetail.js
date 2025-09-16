@@ -2,9 +2,12 @@ import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./FilamentDetails.css";
 import { useFilament } from "../hooks/useFilaments";
+import FilamentUsageChart from "../components/FilamentUsageChart";
+import { useLogs } from "../hooks/useLogs"; // przykład
 
 function FilamentDetail() {
   const { id } = useParams();
+  const { logs } = useLogs(); // pobieramy logi globalnie
   const [copied, setCopied] = useState(null);
   const { filament, note, setNote, openSections, setOpenSections } =
     useFilament(id);
@@ -92,6 +95,8 @@ function FilamentDetail() {
           </span>
         ))}
       </div>
+
+      <FilamentUsageChart filament={filament} logs={logs} />
 
       <div className="info-grid">
         <p>
