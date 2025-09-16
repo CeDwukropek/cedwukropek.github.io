@@ -11,3 +11,13 @@
   flex-wrap: wrap; /* 👈 pozwala zawijać wiersze */
   justify-content: center;
 }
+
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  max-width: 100%;
+  overflow-x: auto; /* przewijanie w poziomie */
+  font-size: 12px;
+}
