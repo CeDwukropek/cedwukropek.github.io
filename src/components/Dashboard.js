@@ -73,7 +73,7 @@ function Dashboard({ filaments }) {
       title: {
         display: true,
         text: `Rozkład wagowy wg ${groupBy}`,
-        font: { size: 18 },
+        font: { size: 16 },
       },
     },
   };
@@ -82,6 +82,7 @@ function Dashboard({ filaments }) {
     <div
       style={{
         margin: "0 auto 2rem auto",
+        width: "100%",
       }}
     >
       <select
@@ -97,7 +98,10 @@ function Dashboard({ filaments }) {
         <option value="material">Materiał</option>
         <option value="name">Nazwa</option>
       </select>
-
+      <br></br>
+      <small>
+        <span style={{ color: "var(--text-50)" }}>Total:</span> {totalWeight}g
+      </small>
       <div style={{ height: "400px" }}>
         <Doughnut data={data} options={options} />
       </div>
