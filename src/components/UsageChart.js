@@ -1,5 +1,5 @@
 import { Line } from "react-chartjs-2";
-import { getMonthlyUsageBy } from "../utils/stats";
+import { getUsageBy } from "../utils/stats";
 import { useState } from "react";
 import "./charts.css";
 
@@ -29,10 +29,13 @@ ChartJS.register(
 
 function UsageChart({ logs, filaments }) {
   const [groupBy, setGroupBy] = useState("global");
-  const { labels, datasets, totalUsage } = getMonthlyUsageBy(
+  const [range, setRange] = useState("month"); // "week" | "month" | "year"
+
+  const { labels, datasets, totalUsage, prevTotalUsage } = getUsageBy(
     logs,
     filaments,
-    groupBy
+    groupBy,
+    range
   );
 
   const data = { labels, datasets };
@@ -46,11 +49,12 @@ function UsageChart({ logs, filaments }) {
         labels: {
           usePointStyle: true,
           boxWidth: 12,
+          apdding: 15,
         },
       },
       title: {
         display: true,
-        text: "Zużycie filamentu w tym miesiącu",
+        text: "Zużycie filamentu",
         font: { size: 16 },
       },
     },
@@ -58,7 +62,7 @@ function UsageChart({ logs, filaments }) {
       x: {
         title: {
           display: true,
-          text: "Dzień miesiąca",
+          text: "Dzień",
           font: { size: 12 },
         },
       },
@@ -72,28 +76,48 @@ function UsageChart({ logs, filaments }) {
     },
   };
 
+  const diff =
+    prevTotalUsage > 0
+      ? (((totalUsage - prevTotalUsage) / prevTotalUsage) * 100).toFixed(1)
+      : null;
+
   return (
-    <div style={{ height: "400px" }}>
-      <select
-        className="select"
-        value={groupBy}
-        onChange={(e) => setGroupBy(e.target.value)}
-      >
-        <option value="global">Całość</option>
-        <option value="color">Kolor</option>
-        <option value="material">Materiał</option>
-        <option value="brand">Brand</option>
-        <option value="filament">Filament</option>
-      </select>
-      <br></br>
-      <br></br>
+    <div style={{ height: "400px", marginBottom: "2rem" }}>
+      <div style={{ display: "flex", gap: "1rem", marginBottom: "1rem" }}>
+        <select
+          className="select"
+          value={range}
+          onChange={(e) => setRange(e.target.value)}
+        >
+          <option value="week">Ostatni tydzień</option>
+          <option value="month">Ostatni miesiąc</option>
+          <option value="year">Ostatni rok</option>
+        </select>
+
+        <select
+          className="select"
+          value={groupBy}
+          onChange={(e) => setGroupBy(e.target.value)}
+        >
+          <option value="global">Całość</option>
+          <option value="color">Kolor</option>
+          <option value="material">Materiał</option>
+          <option value="brand">Brand</option>
+          <option value="filament">Filament</option>
+        </select>
+      </div>
+
       <small>
         <span style={{ color: "var(--text-50)" }}>Total:</span>{" "}
-        {Number(totalUsage).toLocaleString("pl-PL", {
-          minimumFractionDigits: 0,
-          maximumFractionDigits: 2,
-        })}
-        g
+        {Number(totalUsage).toLocaleString("pl-PL")}g
+        {diff !== null && (
+          <span
+            style={{ marginLeft: "0.5rem", color: diff >= 0 ? "red" : "green" }}
+          >
+            {diff >= 0 ? "+" : ""}
+            {diff}% vs poprzedni okres ({prevTotalUsage}g)
+          </span>
+        )}
       </small>
 
       <Line data={data} options={options} />
