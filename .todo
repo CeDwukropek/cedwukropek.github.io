@@ -11,7 +11,7 @@ UI/UX:
     ✔ fix random filament settings order @critical @done (9/11/2025, 3:48:40 PM)
     ✔ auto-update quantity after printing @critical @done (9/10/2025, 6:07:36 PM)
     ☐ add editing/deleting filaments @medium
-    ☐ add "repeat print" button
+    ☐ add "repeat print" button @medium
     ✔ overall filaments weight @medium @done (9/16/2025, 1:34:43 PM)
     ☐ tooltip overflow fix @medium
     ☐ arrows in statistics @low
