@@ -30,7 +30,7 @@ try:
         Reads a g-code file and extracts filament usage in grams and millimeters.
         """
         filament_g = None
-        filament_type = None
+        filament_name = None
 
         try:
             with open(gcode_filepath, 'r', encoding='utf-8') as f:
@@ -44,17 +44,17 @@ try:
                     elif line.startswith('; filament_settings_id = '):
                         match = re.search(r'=\s*(.+)', line)
                         if match:
-                            filament_type = match.group(1).strip().strip('"')
+                            filament_name = match.group(1).strip().strip('"')
                     # If both values are found, no need to continue reading the file
-                    if filament_g is not None and filament_type is not None:
+                    if filament_g is not None and filament_name is not None:
                         break
         except Exception as e:
             print("Błąd", f"Wystąpił błąd podczas odczytu pliku: {e}")
             return None, None
 
-        return filament_g, filament_type
+        return filament_g, filament_name
 
-    def send_to_firebase(filament_g, filament_type):
+    def send_to_firebase(filament_g, filament_name):
         print("=== Inicialization Firebase ===")
         cred = credentials.Certificate(FIREBASE_API_KEY)
         firebase_admin.initialize_app(cred)
@@ -62,18 +62,29 @@ try:
 
         # Get a reference to the Firestore database
         db = firestore.client()
+
+        # 🔍 Szukamy dokumentu po nazwie zamiast ID
+        query = db.collection('filaments').where("name", "==", filament_name).limit(1).stream()
+        doc = None
+        for d in query:
+            doc = d
+            break
+
+        filament_id = doc.id
+        filament_data = doc.to_dict()
+
         # Set specific data to a document with a known ID
-        doc_ref = db.collection('filaments').document(filament_type)
+        doc_ref = db.collection('filaments').document(filament_name)
         logs_ref = db.collection('logs')
         # calculate new quantity using data from gcode
-        new_quantity = round(doc_ref.get().to_dict()['quantity'] - filament_g, 2)
+        new_quantity = round(filament_data['quantity'] - filament_g, 2)
         log_data = {
-            'filamentID': filament_type,
+            'filamentID': filament_id,
             'quantity': round(filament_g, 2) * (-1),
             'time': firestore.SERVER_TIMESTAMP
         }
         # update document in Firestore
-        doc_ref.update({'quantity': new_quantity})
+        db.collection('filaments').document(filament_id).update({'quantity': new_quantity})
         print(f"Updated quantity.")
         logs_ref.add(log_data)
         print(f"Added log.")
