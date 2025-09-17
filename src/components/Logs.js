@@ -25,14 +25,7 @@ function Logs({ data, filaments }) {
         {open && (
           <div className="logsDropdown">
             {data.map((el) => (
-              <Log
-                key={el.id}
-                logId={el.id}
-                filamentId={el.filamentID}
-                quantity={el.quantity}
-                time={el.time.seconds}
-                filaments={filaments}
-              />
+              <Log key={el.id} log={el} filaments={filaments} />
             ))}
           </div>
         )}
@@ -45,14 +38,7 @@ function Logs({ data, filaments }) {
     <div className="logsSidebar">
       <h4>Logi</h4>
       {data.map((el) => (
-        <Log
-          key={el.id}
-          logId={el.id}
-          filamentId={el.filamentID}
-          quantity={el.quantity}
-          time={el.time.seconds}
-          filaments={filaments}
-        />
+        <Log key={el.id} log={el} filaments={filaments} />
       ))}
     </div>
   );

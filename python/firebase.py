@@ -26,35 +26,38 @@ try:
 
     # --- SCRIPT LOGIC ---
     def read_filament_data_from_gcode(gcode_filepath):
-        """
-        Reads a g-code file and extracts filament usage in grams and millimeters.
-        """
         filament_g = None
         filament_name = None
+        estimated_time = None
 
         try:
             with open(gcode_filepath, 'r', encoding='utf-8') as f:
                 for line in f:
-                    # Look for the line with filament usage
                     if line.startswith('; total filament used [g]'):
                         match = re.search(r'=\s*([\d.]+)', line)
                         if match:
                             filament_g = float(match.group(1))
-                    # Look for the line with profile settings ID
+
                     elif line.startswith('; filament_settings_id = '):
                         match = re.search(r'=\s*(.+)', line)
                         if match:
                             filament_name = match.group(1).strip().strip('"')
-                    # If both values are found, no need to continue reading the file
-                    if filament_g is not None and filament_name is not None:
+
+                    elif line.startswith('; estimated printing time (normal mode)'):
+                        match = re.search(r'=\s*(.+)', line)
+                        if match:
+                            estimated_time = match.group(1).strip()
+
+                    if filament_g and filament_name and estimated_time:
                         break
         except Exception as e:
             print("Błąd", f"Wystąpił błąd podczas odczytu pliku: {e}")
-            return None, None
+            return None, None, None
 
-        return filament_g, filament_name
+        return filament_g, filament_name, estimated_time
 
-    def send_to_firebase(filament_g, filament_name):
+
+    def send_to_firebase(filament_g, filament_name, estimated_time):
         print("=== Inicialization Firebase ===")
         cred = credentials.Certificate(FIREBASE_API_KEY)
         firebase_admin.initialize_app(cred)
@@ -74,14 +77,16 @@ try:
         filament_data = doc.to_dict()
 
         # Set specific data to a document with a known ID
-        doc_ref = db.collection('filaments').document(filament_name)
         logs_ref = db.collection('logs')
         # calculate new quantity using data from gcode
         new_quantity = round(filament_data['quantity'] - filament_g, 2)
         log_data = {
             'filamentID': filament_id,
             'quantity': round(filament_g, 2) * (-1),
-            'time': firestore.SERVER_TIMESTAMP
+            'time': firestore.SERVER_TIMESTAMP,
+            'status': 'sliced',
+            'estimated_time': estimated_time,
+            'progress': 0
         }
         # update document in Firestore
         db.collection('filaments').document(filament_id).update({'quantity': new_quantity})
@@ -101,10 +106,10 @@ try:
             gcode_file = "test.gcode"
             print(f"Uruchomiono skrypt ręcznie. Używam ścieżki testowej: {gcode_file}")
 
-        g, t = read_filament_data_from_gcode(gcode_file)
+        g, n, t = read_filament_data_from_gcode(gcode_file)
 
-        if g is not None and t is not None:
-            send_to_firebase(g, t)
+        if g is not None and n is not None and t is not None:
+            send_to_firebase(g, n, t)
             print("Zakończono.")
         else:
             print("Nie udało się uzyskać danych o zużyciu filamentu, nie wysyłam do Firebase.")

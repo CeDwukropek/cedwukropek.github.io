@@ -2,7 +2,7 @@
 Prusa Integration:
     ☐ import printing settings from PrusaSlicer @critical
     ☐ export printing settings from the website @critical
-    ☐ add printing settings comparison @medium
+    ☐ add printing settings comparison @low
     ☐ add printing settings export (CSV, PDF) @low
     ☐ add printing settings import (CSV, PDF) @low
 
@@ -10,7 +10,7 @@ UI/UX:
     ✔ fix random categories order @critical @done (9/11/2025, 3:22:32 PM)
     ✔ fix random filament settings order @critical @done (9/11/2025, 3:48:40 PM)
     ✔ auto-update quantity after printing @critical @done (9/10/2025, 6:07:36 PM)
-    ☐ add timer to finish print
+    ☐ add timer to finish print @high
     ☐ add editing/deleting filaments @medium
     ☐ add "repeat print" button @medium
     ✔ overall filaments weight @medium @done (9/16/2025, 1:34:43 PM)

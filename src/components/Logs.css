@@ -55,7 +55,7 @@
   border-bottom: 1px solid var(--border);
 }
 
-.log small:first-child {
+.log .header {
   padding-top: 0.5rem;
   padding-bottom: 0.25rem;
 }
@@ -91,4 +91,44 @@
 .edit-button:hover {
   cursor: pointer;
   background: transparent;
+}
+
+.failed {
+  color: var(--quantity-low);
+}
+
+.sliced {
+  color: var(--text);
+}
+
+.printing {
+  color: var(--quantity-medium);
+}
+
+.finished {
+  color: var(--accent);
+}
+
+.stopped {
+  color: var(--quantity-extremlyLow);
+}
+
+.log-card button {
+  background-color: transparent;
+  padding: 0;
+  padding-top: 0.25rem;
+  margin: 0;
+}
+
+.log-card button:hover {
+  cursor: pointer;
+  background: transparent;
+}
+
+.text-50 {
+  color: var(--text-50);
+}
+
+.text {
+  color: var(--text);
 }
