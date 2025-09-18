@@ -37,7 +37,7 @@
   position: fixed;
   bottom: 80px; /* nad przyciskiem */
   right: 1rem;
-  width: 90%;
+  width: 30vw;
   max-height: 50vh;
   overflow-y: auto;
   background: var(--card-bg);
