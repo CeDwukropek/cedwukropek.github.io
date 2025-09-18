@@ -41,3 +41,7 @@ Code Quality:
     ☐ improve code comments and documentation @medium
     ☐ optimize performance (lazy loading, memoization) @low
     ☐ create components for repeated UI patterns @low
+
+Multiple Spools:
+    ☐ NFC tag for each Spools
+    ☐ spool recognise

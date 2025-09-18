@@ -113,6 +113,11 @@
   color: var(--quantity-extremlyLow);
 }
 
+.crossed {
+  opacity: 0.75;
+  text-decoration: line-through;
+}
+
 .log-card button {
   background-color: transparent;
   padding: 0;
