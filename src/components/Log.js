@@ -4,7 +4,7 @@ import { updateDoc, doc, increment, getDoc } from "firebase/firestore";
 import DeleteModal from "./DeleteModal.js";
 import { useState, useRef, useEffect } from "react";
 import "./Logs.css";
-import { parse } from "date-fns";
+import ProgressBar from "./ProgressBar.js";
 
 /**
  * Log component displays a single log entry with details about filament usage and print status.
@@ -329,16 +329,16 @@ function Log({ log, filaments }) {
                 Pozostało: <span className="text">{formatTime(remaining)}</span>
               </small>
               <br></br>
-              <small className="text-50">
+              <ProgressBar progress={calculateProgress(log)} />
+              {/*               <small className="text-50">
                 Postęp: <span className="text">{calculateProgress(log)}%</span>
-              </small>
+              </small> */}
             </>
           )}
 
         {/* Timer controls based on log status */}
         {log.status === "sliced" && (
           <>
-            <br></br>
             <button onClick={startTimer} style={{ color: "var(--accent)" }}>
               <small>Start Timer</small>
             </button>
@@ -346,7 +346,6 @@ function Log({ log, filaments }) {
         )}
         {log.status === "printing" && (
           <>
-            <br></br>
             <button
               onClick={stopTimer}
               style={{ color: "var(--quantity-medium)" }}
@@ -357,7 +356,6 @@ function Log({ log, filaments }) {
         )}
         {log.status === "stopped" && (
           <>
-            <br></br>
             <button
               onClick={continueTimer}
               style={{ color: "var(--quantity-high)", marginRight: "0.5rem" }}
