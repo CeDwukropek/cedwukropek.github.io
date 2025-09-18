@@ -102,12 +102,33 @@ function Log({ log, filaments }) {
   };
 
   useEffect(() => {
+    if (!log) return;
+
     const total = parseTime(log.estimated_time);
-    const elapsed = log.elapsed;
-    if (log.status === "printing" && log.started_at && log.total_time) {
-      console.log("recalculated time");
-      runInterval(total, elapsed, new Date(log.started_at.seconds * 1000));
+
+    // Konwersja started_at na Date
+    const startedAt = log.started_at
+      ? log.started_at.toDate
+        ? log.started_at.toDate() // Firestore Timestamp
+        : new Date(log.started_at) // zwykły Date
+      : null;
+
+    if (log.status === "printing" && startedAt) {
+      const elapsedBefore = log.elapsed || 0;
+      const elapsedNow = Math.floor((Date.now() - startedAt.getTime()) / 1000);
+      const elapsedTotal = elapsedBefore + elapsedNow;
+
+      // ustaw od razu
+      setRemaining(Math.max(total - elapsedTotal, 0));
+
+      // i odpal timer
+      runInterval(total, elapsedBefore, startedAt);
     }
+
+    if (log.status === "stopped" && log.elapsed) {
+      setRemaining(Math.max(total - log.elapsed, 0));
+    }
+
     return () => clearInterval(intervalRef.current);
   }, [log]);
 
