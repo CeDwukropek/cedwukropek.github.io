@@ -2,8 +2,9 @@ import { formatRelativeDate } from "../utils/date";
 import { db } from "../config/firebase";
 import { updateDoc, doc, increment, getDoc } from "firebase/firestore";
 import DeleteModal from "./DeleteModal.js";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./Logs.css";
+import { parse } from "date-fns";
 
 /**
  * Log component displays a single log entry with details about filament usage and print status.
@@ -22,7 +23,7 @@ function Log({ log, filaments }) {
   // Find the corresponding filament name based on log's filamentID
   const filament = filaments.find((f) => f.id === log.filamentID);
   const name = filament ? filament.name : `id: ${log.filamentId}`;
-  const formattedTime = formatRelativeDate(log.time);
+  const formattedTime = formatRelativeDate(log.time.seconds);
 
   /**
    * Parses a time string (e.g., "1h 20m 5s") into total seconds.
@@ -53,39 +54,78 @@ function Log({ log, filaments }) {
     return `${h > 0 ? h + "h " : ""}${m > 0 ? m + "m " : ""}${s}s`;
   };
 
+  /*--------------------------------------------*/
+  // test
+  // 1. Konwersja started_at na obiekt Date
+  const startTime = new Date(log?.started_at?.seconds * 1000);
+
+  // 2. Pobranie aktualnego czasu
+  const now = new Date();
+
+  // 3. Obliczenie różnicy w milisekundach
+  const elapsedMilliseconds = now - startTime;
+
+  // 4. Konwersja milisekund na sekundy, minuty i godziny
+  let seconds = Math.floor(elapsedMilliseconds / 1000);
+  let minutes = Math.floor(seconds / 60);
+  let hours = Math.floor(minutes / 60);
+  seconds %= 60;
+  minutes %= 60;
+  // Opcjonalnie: formatowanie do wyświetlenia
+  const t = `${hours}h ${minutes}m ${seconds}s`;
+
+  //console.log(`Czas, który upłynął: ${elapsedMilliseconds}`);
+  /*---------------------------------------------*/
+
   /**
    * Starts a new timer interval, clearing any previous one.
    * Decrements the `remaining` state every second.
    */
-  const runInterval = () => {
+  const runInterval = (total, elapsed_seconds, startedAt) => {
     clearInterval(intervalRef.current);
+
     intervalRef.current = setInterval(() => {
-      setRemaining((prev) => {
-        if (prev <= 1) {
-          clearInterval(intervalRef.current);
-          finishTimer();
-          return 0;
-        }
-        return prev - 1;
-      });
+      const now = Date.now();
+      const start = new Date(startedAt).getTime();
+      const currentElapsed = Math.floor((now - start) / 1000);
+
+      const totalElapsed = elapsed_seconds + currentElapsed; // już było + teraz
+      const newRemainingTime = total - totalElapsed;
+
+      setRemaining(Math.max(newRemainingTime, 0));
+
+      if (newRemainingTime <= 0) {
+        clearInterval(intervalRef.current);
+        finishTimer();
+      }
     }, 1000);
   };
+
+  useEffect(() => {
+    const total = parseTime(log.estimated_time);
+    const elapsed = log.elapsed;
+    if (log.status === "printing" && log.started_at && log.total_time) {
+      console.log("recalculated time");
+      runInterval(total, elapsed, new Date(log.started_at.seconds * 1000));
+    }
+    return () => clearInterval(intervalRef.current);
+  }, [log]);
 
   /**
    * Handles starting the print timer from scratch.
    * Updates the log status to "printing" and sets initial time and progress.
    */
   const startTimer = async () => {
+    console.log("start timer");
     const total = parseTime(log.estimated_time);
-    setRemaining(total);
 
     await updateDoc(doc(db, "logs", log.id), {
       status: "printing",
-      remaining_time: total,
-      progress: 0,
+      started_at: new Date(),
+      elapsed: null,
     });
 
-    runInterval();
+    runInterval(total, 0, new Date());
   };
 
   /**
@@ -93,10 +133,19 @@ function Log({ log, filaments }) {
    * Updates the log status to "printing" and resumes the timer.
    */
   const continueTimer = async () => {
+    console.log("continue timer");
+    const total = parseTime(log.estimated_time);
+    const elapsed = log.elapsed || 0;
+
+    const newStart = new Date();
+
     await updateDoc(doc(db, "logs", log.id), {
       status: "printing",
+      started_at: newStart, // od teraz liczymy
+      elapsed: elapsed, // pamiętamy co już było
     });
-    runInterval();
+
+    runInterval(total, elapsed, newStart);
   };
 
   /**
@@ -104,15 +153,21 @@ function Log({ log, filaments }) {
    * Clears the interval and updates the log status to "stopped" with current progress.
    */
   const stopTimer = async () => {
+    console.log("stop timer");
+
+    const elapsedNow = Math.floor(
+      (Date.now() - new Date(log.started_at.seconds * 1000)) / 1000
+    );
+    const totalElapsed = (log.elapsed || 0) + elapsedNow;
+
     clearInterval(intervalRef.current);
+
     await updateDoc(doc(db, "logs", log.id), {
       status: "stopped",
-      remaining_time: remaining,
       progress: Math.round(
-        ((parseTime(log.estimated_time) - remaining) /
-          parseTime(log.estimated_time)) *
-          100
+        (totalElapsed / parseTime(log.estimated_time)) * 100
       ),
+      elapsed: totalElapsed,
     });
   };
 
@@ -124,28 +179,25 @@ function Log({ log, filaments }) {
   const failTimer = async () => {
     clearInterval(intervalRef.current);
 
-    const elapsed = parseTime(log.estimated_time) - remaining;
-    const percent = elapsed / parseTime(log.estimated_time);
-
     const logRef = doc(db, "logs", log.id);
     const logSnap = await getDoc(logRef);
     const logData = logSnap.data();
 
     const filamentRef = doc(db, "filaments", logData.filamentID);
-    const usedQuantity = (Math.abs(logData.quantity) * percent).toFixed(2);
-    const recoveredQuantity = Math.abs(logData.quantity) - usedQuantity;
+    const filamentSnap = await getDoc(filamentRef);
+    const filamentData = filamentSnap.data();
 
-    // Restore the unused filament quantity
+    const progress = calculateProgress(log);
+
+    const failedQuantity = (logData.quantity * (1 - progress / 100)).toFixed(2);
     await updateDoc(filamentRef, {
-      quantity: increment(recoveredQuantity),
+      quantity: filamentData.quantity - failedQuantity,
     });
 
-    // Update the log with the actual used quantity and "failed" status
     await updateDoc(logRef, {
       status: "failed",
-      progress: Math.round(percent * 100),
+      progress: calculateProgress(log),
       remaining_time: 0,
-      quantity: -usedQuantity, // Store as negative to indicate usage
     });
   };
 
@@ -154,10 +206,12 @@ function Log({ log, filaments }) {
    * Updates the log status to "finished" with 100% progress.
    */
   const finishTimer = async () => {
+    clearInterval(intervalRef.current);
+
     await updateDoc(doc(db, "logs", log.id), {
       status: "finished",
-      progress: 100,
       remaining_time: 0,
+      progress: 100,
     });
   };
 
@@ -191,11 +245,37 @@ function Log({ log, filaments }) {
     setShowModal(false);
   };
 
+  const calculateProgress = (log) => {
+    const total = parseTime(log.estimated_time);
+
+    if (!total) return 0;
+
+    // elapsed zapisane w bazie (pauzy itd.)
+    const elapsedBefore = log.elapsed || 0;
+
+    // jeśli druk w toku, dolicz czas od ostatniego startu
+    let elapsedNow = 0;
+    if (log.status === "printing" && log.started_at) {
+      elapsedNow = Math.floor(
+        (Date.now() - new Date(log.started_at.seconds * 1000)) / 1000
+      );
+    }
+
+    const elapsedTotal = elapsedBefore + elapsedNow;
+    return Math.min(Math.round((elapsedTotal / total) * 100), 100);
+  };
+
   return (
     <div className="log">
       {/* Display filament quantity with appropriate class for plus/minus */}
       <small className={log.quantity < 0 ? "minus header" : "plus header"}>
-        {log.quantity}g
+        <span className={log.status === "failed" ? "crossed" : null}>
+          {log.quantity}
+        </span>
+        {log.status === "failed" && (
+          <span> {(log.quantity * (log.progress / 100)).toFixed(2)}</span>
+        )}
+        g
       </small>
       {/* Display filament name */}
       <small>{name}</small>
@@ -226,6 +306,10 @@ function Log({ log, filaments }) {
               <br></br>
               <small className="text-50">
                 Pozostało: <span className="text">{formatTime(remaining)}</span>
+              </small>
+              <br></br>
+              <small className="text-50">
+                Postęp: <span className="text">{calculateProgress(log)}%</span>
               </small>
             </>
           )}
