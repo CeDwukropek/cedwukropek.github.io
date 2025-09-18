@@ -7,8 +7,8 @@ export function formatRelativeDate(seconds) {
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
 
   if (minutes < 1) return "przed chwilą";
-  if (minutes < 60) return `${minutes} min temu`;
-  if (hours < 24) return `${hours} h temu`;
+  if (minutes < 60) return `${minutes}min temu`;
+  if (hours < 24) return `${hours}h temu`;
   if (days < 7) return `${days} dni temu`;
 
   // fallback – normalna data
