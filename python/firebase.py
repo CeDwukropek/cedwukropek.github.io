@@ -67,11 +67,15 @@ try:
         db = firestore.client()
 
         # 🔍 Szukamy dokumentu po nazwie zamiast ID
+        print("=== Searching for filament in Firestore ===")
         query = db.collection('filaments').where("name", "==", filament_name).limit(1).stream()
+        print("=== Search completed ===")
         doc = None
         for d in query:
             doc = d
             break
+            
+        print("=== Document found ===")
 
         filament_id = doc.id
         filament_data = doc.to_dict()
